@@ -79,4 +79,10 @@ In this specific case,
     ```
 7. Test darknet with sample imagine
     `./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg`
-8. 
+8. Get Coco data sheets
+    ```
+    cp scripts/get_coco_dataset.sh data
+    cd data
+    bash get_coco_dataset.sh
+    ```
+9.
