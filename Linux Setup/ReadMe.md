@@ -4,7 +4,7 @@ In this specific case,
   Target System is Ubuntu 18.04 LTS
 
 
-###Installing Linux
+### Installing Linux
 1. Set up Linux with a swap space of 2x of RAM size (Preferably with a clean install)
 2. Update all packages
 3. Install Graphic Driver
@@ -12,7 +12,7 @@ In this specific case,
 5. Install git for git command support
 
 
-###Installing Cuda Driver for Graphics Card
+### Installing Cuda Driver for Graphics Card
 1. Get Cuda from [Cuda Developer](https://developer.nvidia.com/cuda-downloads)
 2. Select _Linux_ -> _X86-64_ -> _Ubuntu_ -> _18.04_ -> _deb(network)_
 3. In a new Terminal:
@@ -34,7 +34,7 @@ In this specific case,
     ```
 
     
-###Installing Darknet
+### Installing Darknet
   More detailed instruction can be found [Installing Darknet](https://pjreddie.com/darknet/install/)
 1. Installing from Darknet's github repository, in a *NEW* terminal:
     ```
