@@ -1,10 +1,46 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-{\info
-{\author Kuang Jiang}
-{\*\copyright Kuang Jiang}}\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+# Preparation of Linux
+In this specific case, 
+  Target machine is equipped with i5-4200U, GT750M, 6G, 500G.
+  Target System is Ubuntu 18.04 LTS
 
-\f0\fs24 \cf0 //Initial}
+
+###Installing Linux
+1. Set up Linux with a swap space of 2x of RAM size (Preferably with a clean install)
+2. Update all packages
+3. Install Graphic Driver
+4. Install ssh-server for ssh services
+5. Install git for git command support
+
+
+###Installing Cuda Driver for Graphics Card
+1. Get Cuda from [Cuda Developer](https://developer.nvidia.com/cuda-downloads)
+2. Select _Linux_ -> _X86-64_ -> _Ubuntu_ -> _18.04_ -> _deb(network)_
+3. In a new Terminal:
+    ```
+    cd Downloads
+    sudo dpkg -i cuda-repo-ubuntu1804_10.1.168-1_amd64.deb
+    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+    sudo apt update
+    sudo apt install cuda
+    ##sudo apt install nvidia-cuda-toolkit
+    ```
+    Now Cuda should be installing...
+4. Reboot after installation is finished
+5. Verify Cuda installation via method provided by [Verify CUDA Installation](https://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html) for Nvidia Driver version and Running a Cuda Sample
+    ```
+    cat /proc/driver/nvidia/version
+    cd /usr/local/cuda-10.1/samples/
+    make
+    ```
+
+    
+###Installing Darknet
+  More detailed instruction can be found [Installing Darknet](https://pjreddie.com/darknet/install/)
+1. Installing from Darknet's github repository, in a *NEW* terminal:
+    ```
+    git clone https://github.com/pjreddie/darknet.git
+    cd darknet
+    ```
+2. Modify the Makefile for GPU computing: `nano Makefile`
+3. Find and change the line `GPU=0` to `GPU=1`, save and exit via `control`+`x` and then `y`
+4. 
