@@ -37,8 +37,10 @@ In this specific case,
     ```
     Power9 and nvidia-persistenced should be running right after installation.
 6. Include Nvidia Enviornment in Terminal Bashrc:
-    `cd ~`
-    `nano .bashrc`
+    ```
+    cd ~
+    nano .bashrc
+    ```
 7. At the end of file add the following lines:
     ```
     #Nvidia Enviornment Setup
