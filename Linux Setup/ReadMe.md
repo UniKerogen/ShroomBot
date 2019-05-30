@@ -60,5 +60,22 @@ In this specific case,
     cd darknet
     ```
 2. Modify the Makefile for GPU computing: `nano Makefile`
-3. Find and change the line `GPU=0` to `GPU=1`, save and exit via `control`+`x` and then `y`
-4. 
+3. Find and change the line `GPU=0` to `GPU=1`, save and exit via bottom `control`+`x` and then `y`
+4. Grab some weight file for darknet to function
+    ```
+    wget https://pjreddie.com/media/files/yolov3.weights
+    wget https://pjreddie.com/media/files/darknet19.weights
+    wget https://pjreddie.com/media/files/yolov3-tiny.weights
+    wget http://pjreddie.com/media/files/vgg-conv.weights
+    ```
+5. Modify the yolov3.cfg file to specific GPU: `nano cfg/yolov3.cfg`
+6. Change the starting couple lines to the following:
+    ```
+    batch=64
+    subdivisions=64
+    width=416
+    height=416
+    ```
+7. Test darknet with sample imagine
+    `./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg`
+8. 
