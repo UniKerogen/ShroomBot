@@ -31,6 +31,24 @@ In this specific case,
     cat /proc/driver/nvidia/version
     cd /usr/local/cuda-10.1/samples/
     make
+    export PATH=/usr/local/cuda-10.1/bin:/usr/local/cuda-10.1/NsightCompute-2019.1${PATH:+:${PATH}}
+    cd /usr/local/cuda-10.1/samples/bin/x86_64/linux/release
+    ./deviceQuery
+    ```
+    Power9 and nvidia-persistenced should be running right after installation.
+6. Include Nvidia Enviornment in Terminal Bashrc:
+    `cd ~`
+    `nano .bashrc`
+7. At the end of file add the following lines:
+    ```
+    #Nvidia Enviornment Setup
+    export PATH=/usr/local/cuda-10.1/bin:/usr/local/cuda-10.1/NsightCompute-2019.1${PATH:+:${PATH}}
+    ```
+8. After Installation clean-up:
+    ```
+    sudo apt update
+    sudo apt upgrade
+    sudo apt autoremove
     ```
 
     
