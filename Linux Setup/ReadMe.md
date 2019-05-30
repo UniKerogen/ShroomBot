@@ -1,7 +1,7 @@
 # Preparation of Linux
 In this specific case, 
-  Target machine is equipped with i5-4200U, GT750M, 6G, 500G.
-  Target System is Ubuntu 18.04 LTS
+  - Target machine is equipped with i5-4200U, GT750M, 6G, 500G.
+  - Target System is Ubuntu 18.04 LTS
 
 
 ### Installing Linux
