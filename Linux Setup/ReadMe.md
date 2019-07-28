@@ -98,4 +98,7 @@ In this specific case,
     tar xf VOCtrainval_06-Nov-2007.tar
     tar xf VOCtest_06-Nov-2007.tar
     ```
-    
+11. Download pretrained convolution weights
+    ```
+    wget https://pjreddie.com/media/files/darknet53.conv.74
+    ```
