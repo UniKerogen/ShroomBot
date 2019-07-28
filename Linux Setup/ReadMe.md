@@ -23,7 +23,7 @@ In this specific case,
     sudo apt update
     sudo apt install cuda
     ```
-    Now Cuda should be installing...
+    Now Cuda should be installing... (It takes a while)
 4. Reboot after installation is finished
 5. Verify Cuda installation via method provided by [Verify CUDA Installation](https://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html) for Nvidia Driver version and Running a Cuda Sample
     ```
@@ -61,7 +61,7 @@ In this specific case,
     cd darknet
     ```
 2. Modify the Makefile for GPU computing: `nano Makefile`
-3. Find and change the line `GPU=0` to `GPU=1`, save and exit via bottom `control`+`x` and then `y`
+3. Find and change the line `GPU=0` to `GPU=1`, save and exit via bottom `control`+`x` and then `y` to save changes
 4. Grab some weight file for darknet to function
     ```
     wget https://pjreddie.com/media/files/yolov3.weights
