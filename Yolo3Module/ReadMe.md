@@ -125,4 +125,4 @@ Use the following command and wait for it to finish <br/>
 <br/>
 <br/>
 ##### Additional Information
-[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector/) form Learn OpenCV
+[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector) form Learn OpenCV
