@@ -121,8 +121,8 @@ Use the following command and wait for it to finish <br/>
 ```
 ./darknet detector train [PASS_TO_.data_FILE] [PASS_TO_.cfg_FILE] darknet53.conv.74
 ```
+It should take a long while to complete....<br/><br/>
 
-<br/>
-<br/>
-##### Additional Information
+
+#### Additional Material
 [Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector) form Learn OpenCV
