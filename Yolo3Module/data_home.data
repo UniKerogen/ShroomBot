@@ -1,0 +1,5 @@
+classes = 1
+train = /home/ubuntu18/darknet/aplin/home_train.txt
+valid = /home/ubuntu18/darknet/aplin/home_test.txt
+names = /home/ubuntu18/darknet/aplin/home_obj.names
+backup = /home/ubuntu18/darknet/aplin/englishrain/
