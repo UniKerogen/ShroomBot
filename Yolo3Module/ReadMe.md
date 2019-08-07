@@ -45,6 +45,9 @@ __*Current Working Directory: NEW TERMINAL WINDOW*__
     ./labelImg.py
     ```
 3. Once the GUI starts running, use it to label the image and save the xml file to the same directory
+  <p align="center">
+    <img src="https://github.com/UniKerogen/ShroomBot/blob/master/Supplemental%20Pictures/ImageNetUtils_InitialScreen.png" width="50%"/>
+  </p>
 <br/> <br/>
 
 
