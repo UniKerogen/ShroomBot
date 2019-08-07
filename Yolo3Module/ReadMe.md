@@ -98,7 +98,7 @@ Provide darknet with correct configuration for training <br/>
 3. Copy original cfg files to current directory
     ```
     cp ../cfg/yolov3.cfg cfg_yolov3.cfg
-    cp ..cfg/yolov3-tiny.cfg cfg_tiny.cfg
+    cp ../cfg/yolov3-tiny.cfg cfg_tiny.cfg
     ```
 4. Change the following value in cfg_ting.cfg
     - Line 3: `batch=24`
