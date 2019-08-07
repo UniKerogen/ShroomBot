@@ -1,6 +1,7 @@
 # Setting Up Raspebrry Pi to Control Servo
 In this specific case,
   - Target Machine is a Raspberry Pi 3 running Raspbian GNU/Linux 10 (buster)
+  - Servo Module is LX15D, with angle range of 0 - 240 degrees (0 - 1000 resepectfully)
 <br/> <br/>
 
 
