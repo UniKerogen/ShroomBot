@@ -35,6 +35,10 @@ In this specific case,
     ./deviceQuery
     ```
     Power9 and nvidia-persistenced should be running right after installation.
+    The folllowing screen should be shown once the test is completed.
+    <p align="center">
+      <img src="https://github.com/UniKerogen/ShroomBot/blob/master/Supplemental%20Pictures/Cuda_Verification.png" width="50%"/>
+    </p>
 6. Include Nvidia Enviornment in Terminal Bashrc:
     ```
     cd ~
@@ -77,8 +81,11 @@ In this specific case,
     width=416
     height=416
     ```
-7. Test darknet with sample imagine
+7. Test darknet with sample imagine. The following image should be shown once test run is completed.
     `./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg`
+    <p align="center">
+      <img src="https://github.com/UniKerogen/ShroomBot/blob/master/Supplemental%20Pictures/Darkent_Test_Run.png" width="50%"/>
+    </p>
 8. Get Coco data sheets
     ```
     cp scripts/get_coco_dataset.sh data
