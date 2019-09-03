@@ -20,7 +20,7 @@ L2 = 10  # Elbow Length in Centimeters
 L3 = 10  # Radius Length in Centimeters
 L4 = 10  # Metacarpi Length in Centimeters
 L5 = 10  # Finger Length in Centimeters
-GAP_VALUE = 22.5/5  # The Difference between Two Selected Angle
+GAP_VALUE = 22.5/2  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
 COMBO_RESULT = []  # Empty Space for Result
@@ -29,7 +29,23 @@ COMBO_RESULT = []  # Empty Space for Result
 ##############################################################
 #   Class Prototype
 ##############################################################
+# Fix Thread Operation
 class CoreThread(td.Thread):
+    def __init__(self, thread_id, low_end, high_end, time, core_info):
+        td.Thread.__init__(self)
+        self.low_end = low_end
+        self.high_end = high_end
+        self.time = time
+        self.core_info = [core_info, thread_id]
+
+    def run(self):
+        print("Starting ", self.core_info[0], "thread", self.core_info[1])
+        calculation_test(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
+        print("Exiting ", self.core_info[0], "thread", self.core_info[1])
+
+
+# User Determined Thread Operation
+class CoreThread2(td.Thread):
     def __init__(self, thread_id, low_end, high_end, time, core_info):
         td.Thread.__init__(self)
         self.low_end = low_end
@@ -41,7 +57,6 @@ class CoreThread(td.Thread):
         print("Starting ", self.core_info[0], "thread", self.core_info[1])
         calculation(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
         print("Exiting ", self.core_info[0], "thread", self.core_info[1])
-
 
 ##############################################################
 #   Function Prototype
@@ -56,6 +71,18 @@ def list_generator(low_end, high_end, gap):
     if high_end == RANGE_HIGH:
         result_list.append(RANGE_HIGH)
     return result_list
+
+
+def calculation_test(low_end, high_end, gap, time, thread_info):
+    # Establish Degree Array of 5 Different Servos
+    A1 = list_generator(low_end, high_end, gap)
+    A2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A5 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    # print(thread_info[0], thread_info[1], "completed list generation with ", timeit.timeit()-time, "seconds")
+
+    print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
 
 
 # Calculation main function
@@ -96,7 +123,7 @@ def calculation(low_end, high_end, gap, time, thread_info):
         # print(thread_info[0], thread_info[1], "completed one first-degree iteration with ", timeit.timeit()-time)
 
 
-# Core1 Function - Handle the first half of the calculation
+# Core1 Function - 2 thread core
 def core1(low_end, high_end, core_info):
     core1_time_start = timeit.timeit()
     core1threads = []
@@ -121,7 +148,7 @@ def core1(low_end, high_end, core_info):
     print("Core 1 finished in", core1_time_end-core1_time_start)
 
 
-# Core0 Function - Used Specifically for testing purposes
+# Core0 Function - 4 thread core
 def core0(low_end, high_end, core_info):
     print("Starting Core0 for testing purposes at", datetime.datetime.now())
     print(core_info)
@@ -161,7 +188,7 @@ def core0(low_end, high_end, core_info):
     print("Core 0 finished in", core0_end_time - core0_start_time)
 
 
-# Application1 Function - Running the designed function
+# Application1 Function - Dual Core 4 Thread
 def application1():
     print("Starting Process ... ", datetime.datetime.now())
     half_process = (RANGE_LOW + RANGE_HIGH) / 2
@@ -179,7 +206,7 @@ def application1():
     print(COMBO_RESULT)
 
 
-# Application 0 Function - Running the test function
+# Application 0 Function - Single Core 4 thread
 def application0():
     print("Starting the test process ...", datetime.datetime.now())
     # Initialize Cores
@@ -192,13 +219,75 @@ def application0():
     print("Ending test process ...", datetime.datetime.now())
 
 
+# Core2 Function - User Determined Thread Number
+def core2(low_end, high_end, core_info, thread_number):
+    # Core Configuration
+    core2_start = datetime.datetime.now()
+    core2threads = []
+    # Task Separation
+    gaps = []
+    end_point = low_end
+    while end_point <= high_end:
+        gaps.append(end_point)
+        end_point += (abs(low_end) + abs(high_end)) / thread_number
+    # Initialize Threads
+    try:
+        for index in range(0, len(gaps)-1):
+            thread_temp = CoreThread(index, gaps[index], gaps[index+1], core2_start, core_info)
+            thread_temp.start()
+            core2threads.append(thread_temp)
+            time.sleep(1)
+        # Wait till all finish
+        for t in core2threads:
+            t.join()
+        print(core2threads)
+    except:
+        print("Unable to start Thread in Core 2 Kernel")
+    # Print Elaspe Time
+    print("Core 2 finished in", datetime.datetime.now()-core2_start)
+
+
+# Application 2 Function - Quad Core User Defined Threads
+def application2(thread_number):
+    # Core Configuration
+    print("Starting Process ...", datetime.datetime.now())
+    # Task Separation
+    tasks = []
+    end_point = RANGE_LOW
+    while end_point <= RANGE_HIGH:
+        tasks.append(end_point)
+        end_point += (abs(RANGE_LOW) + abs(RANGE_HIGH)) / 4
+    # Initialize Cores
+    p0 = mp.Process(target=core2, args=(tasks[0], tasks[1], "core0", thread_number))
+    p1 = mp.Process(target=core2, args=(tasks[1], tasks[2], "core1", thread_number))
+    p2 = mp.Process(target=core2, args=(tasks[2], tasks[3], "core2", thread_number))
+    p3 = mp.Process(target=core2, args=(tasks[3], tasks[4], "core3", thread_number))
+    # Start Cores
+    p0.start()
+    time.sleep(1)
+    p1.start()
+    time.sleep(1)
+    p2.start()
+    time.sleep(1)
+    p3.start()
+    time.sleep(1)
+    # Wait for all cores to finish
+    p0.join()
+    p1.join()
+    p2.join()
+    p3.join()
+    # Exiting
+    print("Ending Process ...", datetime.datetime.now())
+
+
 ##############################################################
 #   Main Function
 ##############################################################
 def main():
     print("Hello World!")
     # application1()
-    application0()
+    # application0()
+    application2(4)
 
 
 ##############################################################
