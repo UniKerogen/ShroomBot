@@ -1,13 +1,14 @@
+# Estimate 33 hrs on 8950HK
+
 ##############################################################
 #   Libraries
 ##############################################################
-from numba import cuda
+import multiprocessing as mp
+import threading as td
 import math
-import numpy as np
-import time
 import datetime
-import array
-
+import timeit
+import time
 
 ##############################################################
 #   Variable Definition
@@ -19,61 +20,176 @@ L2 = 10  # Elbow Length in Centimeters
 L3 = 10  # Radius Length in Centimeters
 L4 = 10  # Metacarpi Length in Centimeters
 L5 = 10  # Finger Length in Centimeters
-GAP_VALUE = 1  # The Difference between Two Selected Angle
+GAP_VALUE = 22.5/5  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
 COMBO_RESULT = []  # Empty Space for Result
 
 
 ##############################################################
+#   Class Prototype
+##############################################################
+class CoreThread(td.Thread):
+    def __init__(self, thread_id, low_end, high_end, time, core_info):
+        td.Thread.__init__(self)
+        self.low_end = low_end
+        self.high_end = high_end
+        self.time = time
+        self.core_info = [core_info, thread_id]
+
+    def run(self):
+        print("Starting ", self.core_info[0], "thread", self.core_info[1])
+        calculation(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
+        print("Exiting ", self.core_info[0], "thread", self.core_info[1])
+
+
+##############################################################
 #   Function Prototype
 ##############################################################
 # Generating a list based on boundaries and differences
-def array_generator(low_end, high_end, gap):
+def list_generator(low_end, high_end, gap):
     result_list = []
     attach_value = low_end
-    while attach_value != high_end + 1:
+    while attach_value < high_end:
         result_list.append(attach_value)
         attach_value += gap
-    result_array = np.array([result_list])
-    return result_array
+    if high_end == RANGE_HIGH:
+        result_list.append(RANGE_HIGH)
+    return result_list
 
 
-@cuda.jit(nopython=True, parallel=True)
-def cal_kernel(input_array):
-    # Establish Variables
-    low_end = input_array[0]
-    high_end = input_array[1]
-    gap = input_array[2]
+# Calculation main function
+def calculation(low_end, high_end, gap, time, thread_info):
     # Establish Degree Array of 5 Different Servos
-    A1 = array_generator(low_end, high_end, gap)
-    A2 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A3 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A4 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A5 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A1 = list_generator(low_end, high_end, gap)
+    A2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    A5 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    # print(thread_info[0], thread_info[1], "completed list generation with ", timeit.timeit()-time, "seconds")
 
     # Full Calculation Method
-    for a in range(A1.shape[1]):
-        print(" * Current working on ", A1[a])
-        for b in range(A2.shape[1]):
-            for c in range(A3.shape[1]):
-                for d in range(A4.shape[1]):
-                    for e in range(A5.shape[1]):
-                        y = L1 * math.cos(math.radians(A1[0][a])) + \
-                            L2 * math.cos(math.radians(A1[0][a] + A2[0][b])) + \
-                            L3 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
-                            L4 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d])) + \
-                            L5 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d] + A5[0][e]))
+    print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
+    for a in range(len(A1)):
+        print(" * ", thread_info[0], thread_info[1], "is current working on ", A1[a])
+        for b in range(len(A2)):
+            for c in range(len(A3)):
+                for d in range(len(A4)):
+                    for e in range(len(A5)):
+                        y = L1 * math.cos(math.radians(A1[a])) + \
+                            L2 * math.cos(math.radians(A1[a] + A2[b])) + \
+                            L3 * math.cos(math.radians(A1[a] + A2[b] + A3[c])) + \
+                            L4 * math.cos(math.radians(A1[a] + A2[b] + A3[c] + A4[d])) + \
+                            L5 * math.cos(math.radians(A1[a] + A2[b] + A3[c] + A4[d] + A5[e]))
                         # Once Height Matches, Calculate Reach
                         if y == DESIRED_HEIGHT:
-                            x = L1 * math.sin(math.radians(A1[0][a])) + \
-                                L2 * math.sin(math.radians(A1[0][a] + A2[0][b])) + \
-                                L3 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
-                                L4 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d])) + \
-                                L5 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d] + A5[0][e]))
+                            x = L1 * math.sin(math.radians(A1[a])) + \
+                                L2 * math.sin(math.radians(A1[a] + A2[b])) + \
+                                L3 * math.sin(math.radians(A1[a] + A2[b] + A3[c])) + \
+                                L4 * math.sin(math.radians(A1[a] + A2[b] + A3[c] + A4[d])) + \
+                                L5 * math.sin(math.radians(A1[a] + A2[b] + A3[c] + A4[d] + A5[e]))
                             # Save the Combination for Servo Angles
                             if x == DESIRED_REACH:
-                                COMBO_RESULT.append([A1[0][a], A2[0][b], A3[0][c], A4[0][d], A5[0][e], '\n'])
+                                COMBO_RESULT.append([A1[a], A2[b], A3[c], A4[d], A5[e], '\n'])
+                        # print(thread_info[0], thread_info[1], "completed one fifth-degree iteration with", timeit.timeit()-time)
+                # print(thread_info[0], thread_info[1], "completed one third-degree iteration with ", timeit.timeit()-time)
+        # print(thread_info[0], thread_info[1], "completed one first-degree iteration with ", timeit.timeit()-time)
+
+
+# Core1 Function - Handle the first half of the calculation
+def core1(low_end, high_end, core_info):
+    core1_time_start = timeit.timeit()
+    core1threads = []
+    midpoint = (low_end + high_end)/2
+    # Initialize Threads
+    thread1 = CoreThread(1, low_end, midpoint, core1_time_start, core_info)
+    thread2 = CoreThread(2, midpoint, high_end, core1_time_start, core_info)
+    # Try to Start All Threads
+    try:
+        thread1.start()
+        core1threads.append(thread1)
+        thread2.start()
+        core1threads.append(thread2)
+
+        # Wait Till Both Threads are Finished
+        for t in core1threads:
+            t.join()
+    # Catch Exceptions in All Condition
+    except:
+        print("Unable to start Thread in Core 1")
+    core1_time_end = timeit.timeit()
+    print("Core 1 finished in", core1_time_end-core1_time_start)
+
+
+# Core0 Function - Used Specifically for testing purposes
+def core0(low_end, high_end, core_info):
+    print("Starting Core0 for testing purposes at", datetime.datetime.now())
+    print(core_info)
+    # Initialize Cores
+    core0_start_time = timeit.timeit()
+    core0threads = []
+    separation_gap = (abs(low_end) + abs(high_end)) / 4
+    separation_point_1 = RANGE_LOW + separation_gap
+    separation_point_2 = RANGE_LOW + separation_gap * 2
+    separation_point_3 = RANGE_LOW + separation_gap * 3
+    # Initialize Threads
+    thread01 = CoreThread(1, low_end, separation_point_1, core0_start_time, core_info)
+    thread02 = CoreThread(2, separation_point_1, separation_point_2, core0_start_time, core_info)
+    thread03 = CoreThread(3, separation_point_2, separation_point_3, core0_start_time, core_info)
+    thread04 = CoreThread(4, separation_point_3, high_end, core0_start_time, core_info)
+    # Try to Start All Threads
+    try:
+        thread01.start()
+        core0threads.append(thread01)
+        time.sleep(3)
+        thread02.start()
+        core0threads.append(thread02)
+        time.sleep(3)
+        thread03.start()
+        core0threads.append(thread03)
+        time.sleep(3)
+        thread04.start()
+        core0threads.append(thread04)
+
+        # Wait Till Both Threads are Finished
+        for t in core0threads:
+            t.join()
+    # Catch Exceptions in All Condition
+    except:
+        print("Unable to start Thread in Core0")
+    core0_end_time = timeit.timeit() - core0_start_time
+    print("Core 0 finished in", core0_end_time - core0_start_time)
+
+
+# Application1 Function - Running the designed function
+def application1():
+    print("Starting Process ... ", datetime.datetime.now())
+    half_process = (RANGE_LOW + RANGE_HIGH) / 2
+    # Initialize Cores
+    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
+    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
+    # Start Cores
+    p1.start()
+    p2.start()
+    # Wait Till all Cores are Finished
+    p1.join()
+    p2.join()
+    # Exiting
+    print("Ending Process ... ", datetime.datetime.now())
+    print(COMBO_RESULT)
+
+
+# Application 0 Function - Running the test function
+def application0():
+    print("Starting the test process ...", datetime.datetime.now())
+    # Initialize Cores
+    p0 = mp.Process(target=core0, args=(RANGE_LOW, RANGE_HIGH, "core0"))
+    # Start Cores
+    p0.start()
+    # Wait till all cores finish
+    p0.join()
+    # Exiting
+    print("Ending test process ...", datetime.datetime.now())
 
 
 ##############################################################
@@ -81,11 +197,8 @@ def cal_kernel(input_array):
 ##############################################################
 def main():
     print("Hello World!")
-    print("Starting Process ... ", datetime.datetime.now())
-    c = array_generator(-10, 10, 1)
-    input_array = [-90, 90, 1]
-    cal_kernel(input_array)
-    print("Ending Process ... ", datetime.datetime.now())
+    # application1()
+    application0()
 
 
 ##############################################################
