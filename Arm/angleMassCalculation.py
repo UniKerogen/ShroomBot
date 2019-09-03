@@ -7,6 +7,8 @@ import multiprocessing as mp
 import threading as td
 import math
 import datetime
+import timeit
+import time
 
 ##############################################################
 #   Variable Definition
@@ -18,7 +20,7 @@ L2 = 10  # Elbow Length in Centimeters
 L3 = 10  # Radius Length in Centimeters
 L4 = 10  # Metacarpi Length in Centimeters
 L5 = 10  # Finger Length in Centimeters
-GAP_VALUE = 1  # The Difference between Two Selected Angle
+GAP_VALUE = 22.5/5  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
 COMBO_RESULT = []  # Empty Space for Result
@@ -28,17 +30,17 @@ COMBO_RESULT = []  # Empty Space for Result
 #   Class Prototype
 ##############################################################
 class CoreThread(td.Thread):
-    def __init__(self, threadid, name, low_end, high_end):
+    def __init__(self, thread_id, low_end, high_end, time, core_info):
         td.Thread.__init__(self)
-        self.threadid = threadid
-        self.name = name
         self.low_end = low_end
         self.high_end = high_end
+        self.time = time
+        self.core_info = [core_info, thread_id]
 
     def run(self):
-        print("Starting ", self.name)
-        calculation(self.low_end, self.high_end, GAP_VALUE)
-        print("Exiting ", self.name)
+        print("Starting ", self.core_info[0], "thread", self.core_info[1])
+        calculation(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
+        print("Exiting ", self.core_info[0], "thread", self.core_info[1])
 
 
 ##############################################################
@@ -48,24 +50,28 @@ class CoreThread(td.Thread):
 def list_generator(low_end, high_end, gap):
     result_list = []
     attach_value = low_end
-    while attach_value != high_end:
+    while attach_value < high_end:
         result_list.append(attach_value)
         attach_value += gap
+    if high_end == RANGE_HIGH:
+        result_list.append(RANGE_HIGH)
     return result_list
 
 
 # Calculation main function
-def calculation(low_end, high_end, gap):
+def calculation(low_end, high_end, gap, time, thread_info):
     # Establish Degree Array of 5 Different Servos
     A1 = list_generator(low_end, high_end, gap)
     A2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     A3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     A4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     A5 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    # print(thread_info[0], thread_info[1], "completed list generation with ", timeit.timeit()-time, "seconds")
 
     # Full Calculation Method
+    print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
     for a in range(len(A1)):
-        print(" * Current working on ", A1[a])
+        print(" * ", thread_info[0], thread_info[1], "is current working on ", A1[a])
         for b in range(len(A2)):
             for c in range(len(A3)):
                 for d in range(len(A4)):
@@ -85,15 +91,19 @@ def calculation(low_end, high_end, gap):
                             # Save the Combination for Servo Angles
                             if x == DESIRED_REACH:
                                 COMBO_RESULT.append([A1[a], A2[b], A3[c], A4[d], A5[e], '\n'])
+                        # print(thread_info[0], thread_info[1], "completed one fifth-degree iteration with", timeit.timeit()-time)
+                # print(thread_info[0], thread_info[1], "completed one third-degree iteration with ", timeit.timeit()-time)
+        # print(thread_info[0], thread_info[1], "completed one first-degree iteration with ", timeit.timeit()-time)
 
 
-# Core1 Function
-def core1(low_end, high_end):
+# Core1 Function - Handle the first half of the calculation
+def core1(low_end, high_end, core_info):
+    core1_time_start = timeit.timeit()
     core1threads = []
     midpoint = (low_end + high_end)/2
     # Initialize Threads
-    thread1 = CoreThread(1, "Thread1", low_end, midpoint)
-    thread2 = CoreThread(2, "Thread2", midpoint, high_end)
+    thread1 = CoreThread(1, low_end, midpoint, core1_time_start, core_info)
+    thread2 = CoreThread(2, midpoint, high_end, core1_time_start, core_info)
     # Try to Start All Threads
     try:
         thread1.start()
@@ -107,39 +117,57 @@ def core1(low_end, high_end):
     # Catch Exceptions in All Condition
     except:
         print("Unable to start Thread in Core 1")
+    core1_time_end = timeit.timeit()
+    print("Core 1 finished in", core1_time_end-core1_time_start)
 
 
-# Core2 Function
-def core2(low_end, high_end):
-    core2threads = []
-    midpoint = (low_end + high_end) / 2
+# Core0 Function - Used Specifically for testing purposes
+def core0(low_end, high_end, core_info):
+    print("Starting Core0 for testing purposes at", datetime.datetime.now())
+    print(core_info)
+    # Initialize Cores
+    core0_start_time = timeit.timeit()
+    core0threads = []
+    separation_gap = (abs(low_end) + abs(high_end)) / 4
+    separation_point_1 = RANGE_LOW + separation_gap
+    separation_point_2 = RANGE_LOW + separation_gap * 2
+    separation_point_3 = RANGE_LOW + separation_gap * 3
     # Initialize Threads
-    thread3 = CoreThread(3, "Thread3", low_end, midpoint)
-    thread4 = CoreThread(4, "Thread4", midpoint, high_end)
+    thread01 = CoreThread(1, low_end, separation_point_1, core0_start_time, core_info)
+    thread02 = CoreThread(2, separation_point_1, separation_point_2, core0_start_time, core_info)
+    thread03 = CoreThread(3, separation_point_2, separation_point_3, core0_start_time, core_info)
+    thread04 = CoreThread(4, separation_point_3, high_end, core0_start_time, core_info)
     # Try to Start All Threads
     try:
-        thread3.start()
-        core2threads.append(thread3)
-        thread4.start()
-        core2threads.append(thread4)
+        thread01.start()
+        core0threads.append(thread01)
+        time.sleep(3)
+        thread02.start()
+        core0threads.append(thread02)
+        time.sleep(3)
+        thread03.start()
+        core0threads.append(thread03)
+        time.sleep(3)
+        thread04.start()
+        core0threads.append(thread04)
 
         # Wait Till Both Threads are Finished
-        for t in core2threads:
+        for t in core0threads:
             t.join()
     # Catch Exceptions in All Condition
     except:
-        print("Unable to start Thread in Core 2")
+        print("Unable to start Thread in Core0")
+    core0_end_time = timeit.timeit() - core0_start_time
+    print("Core 0 finished in", core0_end_time - core0_start_time)
 
 
-##############################################################
-#   Main Function
-##############################################################
-def main():
-    print("Hello World!")
+# Application1 Function - Running the designed function
+def application1():
     print("Starting Process ... ", datetime.datetime.now())
+    half_process = (RANGE_LOW + RANGE_HIGH) / 2
     # Initialize Cores
-    p1 = mp.Process(target=core1, args=(-90, 0,))
-    p2 = mp.Process(target=core2, args=(0, 90,))
+    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
+    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
     # Start Cores
     p1.start()
     p2.start()
@@ -151,19 +179,30 @@ def main():
     print(COMBO_RESULT)
 
 
+# Application 0 Function - Running the test function
+def application0():
+    print("Starting the test process ...", datetime.datetime.now())
+    # Initialize Cores
+    p0 = mp.Process(target=core0, args=(RANGE_LOW, RANGE_HIGH, "core0"))
+    # Start Cores
+    p0.start()
+    # Wait till all cores finish
+    p0.join()
+    # Exiting
+    print("Ending test process ...", datetime.datetime.now())
+
+
+##############################################################
+#   Main Function
+##############################################################
+def main():
+    print("Hello World!")
+    # application1()
+    application0()
+
+
 ##############################################################
 #    Main Function Runner
 ##############################################################
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
