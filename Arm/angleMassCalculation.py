@@ -1,5 +1,6 @@
 # Estimate 33 hrs on 8950HK for Single Stream
 # Run-Time of 9 minutes with quad core 16 threads of 1073741824 calculation @ 4.29GHz on 8700K
+# Run-Time of 10 minutes with hexa core 24 threads of 2073071593 calculation @3.5GHz on 8750H
 # Run-Time of 13 minutes with quad core 16 threads of 1073741824 calculation @ 3.10GHz on 8750H
 # Run-Time of 39 minutes with single core 4 threads of 1073741824 calculation @ 3.8GHz~ on 8750H
 # Run-Time of 16 minutes with dual core 4 threads of 1073741824 calculation @ 4.34GHz on 8700K
@@ -17,7 +18,8 @@ import time
 ##############################################################
 #   Variable Definition
 ##############################################################
-SLEEP_TIME = 4  # Second
+SLEEP_TIME = 4.5  # Second
+CORE_NUMBER = 6  # Cores
 THREAD_NUMBER = 4  # Threads
 DESIRED_HEIGHT = 10  # Centimeters
 DESIRED_REACH = 10  # Centimeters
@@ -272,15 +274,40 @@ def application2(thread_number):
     print("Ending Process ...", datetime.datetime.now())
 
 
+# Application 3 Function - User Defined Core User Defined Threads
+def application3(core_number, thread_number):
+    # Core Configuration
+    print("Starting Process ...", datetime.datetime.now())
+    processor_core = []
+    # Task Separation
+    tasks = []
+    end_point = RANGE_LOW
+    while end_point <= RANGE_HIGH:
+        tasks.append(end_point)
+        end_point += (abs(RANGE_LOW) + abs(RANGE_HIGH)) / core_number
+    # Initialize Cores
+    for index in range(0, core_number):
+        p_temp = mp.Process(target=core2, args=(tasks[index], tasks[index+1], "core"+str(index), thread_number))
+        processor_core.append(p_temp)
+        p_temp.start()
+        time.sleep(SLEEP_TIME)
+    # Wait for core to finish
+    for c in processor_core:
+        c.join()
+    # Exiting
+    print("Ending Process ...", datetime.datetime.now())
+
+
 ##############################################################
 #   Main Function
 ##############################################################
 def main():
     print("Hello World!")
     time_start = datetime.datetime.now()
-    application0()
+    # application0()
     # application1()
     # application2(THREAD_NUMBER)
+    application3(CORE_NUMBER, THREAD_NUMBER)
     print("Total Elapse", datetime.datetime.now()-time_start)
 
 
