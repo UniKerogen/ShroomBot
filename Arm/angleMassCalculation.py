@@ -1,5 +1,8 @@
 # Estimate 33 hrs on 8950HK for Single Stream
-# Run-Time of 13 minutes with quad core 16 threads of 1073741824 calculation @ 3.10Ghz on 8750H
+# Run-Time of 9 minutes with quad core 16 threads of 1073741824 calculation @ 4.29GHz on 8700K
+# Run-Time of 13 minutes with quad core 16 threads of 1073741824 calculation @ 3.10GHz on 8750H
+# Run-Time of 39 minutes with single core 4 threads of 1073741824 calculation @ 3.8GHz~ on 8750H
+# Run-Time of 16 minutes with dual core 4 threads of 1073741824 calculation @ 4.34GHz on 8700K
 
 ##############################################################
 #   Libraries
