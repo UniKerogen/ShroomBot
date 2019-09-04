@@ -1,6 +1,7 @@
 # Estimate 33 hrs on 8950HK for Single Stream
+# Run-Time of 6.5 minutes with hexa core 30 threads of 2073071593 calculation @ 3.9GHz on 8750H
 # Run-Time of 9 minutes with quad core 16 threads of 1073741824 calculation @ 4.29GHz on 8700K
-# Run-Time of 10 minutes with hexa core 24 threads of 2073071593 calculation @3.5GHz on 8750H
+# Run-Time of 10 minutes with hexa core 24 threads of 2073071593 calculation @ 3.5GHz on 8750H
 # Run-Time of 13 minutes with quad core 16 threads of 1073741824 calculation @ 3.10GHz on 8750H
 # Run-Time of 39 minutes with single core 4 threads of 1073741824 calculation @ 3.8GHz~ on 8750H
 # Run-Time of 16 minutes with dual core 4 threads of 1073741824 calculation @ 4.34GHz on 8700K
@@ -18,9 +19,9 @@ import time
 ##############################################################
 #   Variable Definition
 ##############################################################
-SLEEP_TIME = 4.5  # Second
+SLEEP_TIME = 1.4  # Second
 CORE_NUMBER = 6  # Cores
-THREAD_NUMBER = 4  # Threads
+THREAD_NUMBER = 5  # Threads
 DESIRED_HEIGHT = 10  # Centimeters
 DESIRED_REACH = 10  # Centimeters
 L1 = 10  # Humerus Length in Centimeters
@@ -28,7 +29,7 @@ L2 = 10  # Elbow Length in Centimeters
 L3 = 10  # Radius Length in Centimeters
 L4 = 10  # Metacarpi Length in Centimeters
 L5 = 10  # Finger Length in Centimeters
-GAP_VALUE = 22.5/(2*THREAD_NUMBER)  # The Difference between Two Selected Angle
+GAP_VALUE = 180/(2*CORE_NUMBER*THREAD_NUMBER)  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
 COMBO_RESULT = []  # Empty Space for Result
@@ -230,7 +231,7 @@ def core2(low_end, high_end, core_info, thread_number):
             thread_temp = CoreThread(index, gaps[index], gaps[index+1], core2_start, core_info)
             thread_temp.start()
             core2threads.append(thread_temp)
-            time.sleep(1)  # Sleep for terminal id output
+            time.sleep(0.2)  # Sleep for terminal id output
         # Wait till all finish
         for t in core2threads:
             t.join()
@@ -238,7 +239,7 @@ def core2(low_end, high_end, core_info, thread_number):
     except:
         print("Unable to start Thread in Core 2 Kernel")
     # Print Elapse Time
-    print("Core 2 finished in", datetime.datetime.now()-core2_start)
+    print("Core 2 Kernel finished in", datetime.datetime.now()-core2_start)
 
 
 # Application 2 Function - Quad Core User Defined Threads
