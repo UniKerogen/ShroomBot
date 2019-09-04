@@ -1,4 +1,5 @@
-# Estimate 33 hrs on 8950HK
+# Estimate 33 hrs on 8950HK for Single Stream
+# Run-Time of 13 minutes with quad core 16 threads of 1073741824 calculation @ 3.10Ghz on 8750H
 
 ##############################################################
 #   Libraries
@@ -13,6 +14,8 @@ import time
 ##############################################################
 #   Variable Definition
 ##############################################################
+SLEEP_TIME = 4  # Second
+THREAD_NUMBER = 4  # Threads
 DESIRED_HEIGHT = 10  # Centimeters
 DESIRED_REACH = 10  # Centimeters
 L1 = 10  # Humerus Length in Centimeters
@@ -20,7 +23,7 @@ L2 = 10  # Elbow Length in Centimeters
 L3 = 10  # Radius Length in Centimeters
 L4 = 10  # Metacarpi Length in Centimeters
 L5 = 10  # Finger Length in Centimeters
-GAP_VALUE = 22.5/2  # The Difference between Two Selected Angle
+GAP_VALUE = 22.5/(2*THREAD_NUMBER)  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
 COMBO_RESULT = []  # Empty Space for Result
@@ -40,23 +43,9 @@ class CoreThread(td.Thread):
 
     def run(self):
         print("Starting ", self.core_info[0], "thread", self.core_info[1])
-        calculation_test(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
-        print("Exiting ", self.core_info[0], "thread", self.core_info[1])
-
-
-# User Determined Thread Operation
-class CoreThread2(td.Thread):
-    def __init__(self, thread_id, low_end, high_end, time, core_info):
-        td.Thread.__init__(self)
-        self.low_end = low_end
-        self.high_end = high_end
-        self.time = time
-        self.core_info = [core_info, thread_id]
-
-    def run(self):
-        print("Starting ", self.core_info[0], "thread", self.core_info[1])
         calculation(self.low_end, self.high_end, GAP_VALUE, self.time, self.core_info)
         print("Exiting ", self.core_info[0], "thread", self.core_info[1])
+
 
 ##############################################################
 #   Function Prototype
@@ -75,14 +64,14 @@ def list_generator(low_end, high_end, gap):
 
 def calculation_test(low_end, high_end, gap, time, thread_info):
     # Establish Degree Array of 5 Different Servos
-    A1 = list_generator(low_end, high_end, gap)
-    A2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A5 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    a1 = list_generator(low_end, high_end, gap)
+    a2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    a3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    a4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
+    a5 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     # print(thread_info[0], thread_info[1], "completed list generation with ", timeit.timeit()-time, "seconds")
 
-    print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
+    print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in a1])
 
 
 # Calculation main function
@@ -98,7 +87,7 @@ def calculation(low_end, high_end, gap, time, thread_info):
     # Full Calculation Method
     print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
     for a in range(len(A1)):
-        print(" * ", thread_info[0], thread_info[1], "is current working on ", A1[a])
+        print(" * ", thread_info[0], "thread", thread_info[1], "is current working on ", A1[a])
         for b in range(len(A2)):
             for c in range(len(A3)):
                 for d in range(len(A4)):
@@ -148,6 +137,24 @@ def core1(low_end, high_end, core_info):
     print("Core 1 finished in", core1_time_end-core1_time_start)
 
 
+# Application1 Function - Dual Core 4 Thread
+def application1():
+    print("Starting Process ... ", datetime.datetime.now())
+    half_process = (RANGE_LOW + RANGE_HIGH) / 2
+    # Initialize Cores
+    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
+    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
+    # Start Cores
+    p1.start()
+    p2.start()
+    # Wait Till all Cores are Finished
+    p1.join()
+    p2.join()
+    # Exiting
+    print("Ending Process ... ", datetime.datetime.now())
+    print(COMBO_RESULT)
+
+
 # Core0 Function - 4 thread core
 def core0(low_end, high_end, core_info):
     print("Starting Core0 for testing purposes at", datetime.datetime.now())
@@ -155,7 +162,7 @@ def core0(low_end, high_end, core_info):
     # Initialize Cores
     core0_start_time = timeit.timeit()
     core0threads = []
-    separation_gap = (abs(low_end) + abs(high_end)) / 4
+    separation_gap = (high_end - low_end) / 4
     separation_point_1 = RANGE_LOW + separation_gap
     separation_point_2 = RANGE_LOW + separation_gap * 2
     separation_point_3 = RANGE_LOW + separation_gap * 3
@@ -177,7 +184,6 @@ def core0(low_end, high_end, core_info):
         time.sleep(3)
         thread04.start()
         core0threads.append(thread04)
-
         # Wait Till Both Threads are Finished
         for t in core0threads:
             t.join()
@@ -186,24 +192,6 @@ def core0(low_end, high_end, core_info):
         print("Unable to start Thread in Core0")
     core0_end_time = timeit.timeit() - core0_start_time
     print("Core 0 finished in", core0_end_time - core0_start_time)
-
-
-# Application1 Function - Dual Core 4 Thread
-def application1():
-    print("Starting Process ... ", datetime.datetime.now())
-    half_process = (RANGE_LOW + RANGE_HIGH) / 2
-    # Initialize Cores
-    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
-    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
-    # Start Cores
-    p1.start()
-    p2.start()
-    # Wait Till all Cores are Finished
-    p1.join()
-    p2.join()
-    # Exiting
-    print("Ending Process ... ", datetime.datetime.now())
-    print(COMBO_RESULT)
 
 
 # Application 0 Function - Single Core 4 thread
@@ -229,7 +217,7 @@ def core2(low_end, high_end, core_info, thread_number):
     end_point = low_end
     while end_point <= high_end:
         gaps.append(end_point)
-        end_point += (abs(low_end) + abs(high_end)) / thread_number
+        end_point += (high_end - low_end) / thread_number
     # Initialize Threads
     try:
         for index in range(0, len(gaps)-1):
@@ -240,7 +228,7 @@ def core2(low_end, high_end, core_info, thread_number):
         # Wait till all finish
         for t in core2threads:
             t.join()
-        print(core2threads)
+    # Catch exception that stop Core2 Kernel from starting
     except:
         print("Unable to start Thread in Core 2 Kernel")
     # Print Elaspe Time
@@ -264,13 +252,13 @@ def application2(thread_number):
     p3 = mp.Process(target=core2, args=(tasks[3], tasks[4], "core3", thread_number))
     # Start Cores
     p0.start()
-    time.sleep(1)
+    time.sleep(SLEEP_TIME)
     p1.start()
-    time.sleep(1)
+    time.sleep(SLEEP_TIME)
     p2.start()
-    time.sleep(1)
+    time.sleep(SLEEP_TIME)
     p3.start()
-    time.sleep(1)
+    time.sleep(SLEEP_TIME)
     # Wait for all cores to finish
     p0.join()
     p1.join()
@@ -287,7 +275,7 @@ def main():
     print("Hello World!")
     # application1()
     # application0()
-    application2(4)
+    application2(THREAD_NUMBER)
 
 
 ##############################################################
