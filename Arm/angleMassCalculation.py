@@ -62,6 +62,7 @@ def list_generator(low_end, high_end, gap):
     return result_list
 
 
+# Calculation test function for data assignment
 def calculation_test(low_end, high_end, gap, time, thread_info):
     # Establish Degree Array of 5 Different Servos
     a1 = list_generator(low_end, high_end, gap)
@@ -112,50 +113,7 @@ def calculation(low_end, high_end, gap, time, thread_info):
         # print(thread_info[0], thread_info[1], "completed one first-degree iteration with ", timeit.timeit()-time)
 
 
-# Core1 Function - 2 thread core
-def core1(low_end, high_end, core_info):
-    core1_time_start = timeit.timeit()
-    core1threads = []
-    midpoint = (low_end + high_end)/2
-    # Initialize Threads
-    thread1 = CoreThread(1, low_end, midpoint, core1_time_start, core_info)
-    thread2 = CoreThread(2, midpoint, high_end, core1_time_start, core_info)
-    # Try to Start All Threads
-    try:
-        thread1.start()
-        core1threads.append(thread1)
-        thread2.start()
-        core1threads.append(thread2)
-
-        # Wait Till Both Threads are Finished
-        for t in core1threads:
-            t.join()
-    # Catch Exceptions in All Condition
-    except:
-        print("Unable to start Thread in Core 1")
-    core1_time_end = timeit.timeit()
-    print("Core 1 finished in", core1_time_end-core1_time_start)
-
-
-# Application1 Function - Dual Core 4 Thread
-def application1():
-    print("Starting Process ... ", datetime.datetime.now())
-    half_process = (RANGE_LOW + RANGE_HIGH) / 2
-    # Initialize Cores
-    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
-    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
-    # Start Cores
-    p1.start()
-    p2.start()
-    # Wait Till all Cores are Finished
-    p1.join()
-    p2.join()
-    # Exiting
-    print("Ending Process ... ", datetime.datetime.now())
-    print(COMBO_RESULT)
-
-
-# Core0 Function - 4 thread core
+# Core0 Kernel Function - 4 thread core
 def core0(low_end, high_end, core_info):
     print("Starting Core0 for testing purposes at", datetime.datetime.now())
     print(core_info)
@@ -207,7 +165,50 @@ def application0():
     print("Ending test process ...", datetime.datetime.now())
 
 
-# Core2 Function - User Determined Thread Number
+# Core1 Kernel Function - 2 thread core
+def core1(low_end, high_end, core_info):
+    core1_time_start = timeit.timeit()
+    core1threads = []
+    midpoint = (low_end + high_end)/2
+    # Initialize Threads
+    thread1 = CoreThread(1, low_end, midpoint, core1_time_start, core_info)
+    thread2 = CoreThread(2, midpoint, high_end, core1_time_start, core_info)
+    # Try to Start All Threads
+    try:
+        thread1.start()
+        core1threads.append(thread1)
+        thread2.start()
+        core1threads.append(thread2)
+
+        # Wait Till Both Threads are Finished
+        for t in core1threads:
+            t.join()
+    # Catch Exceptions in All Condition
+    except:
+        print("Unable to start Thread in Core 1")
+    core1_time_end = timeit.timeit()
+    print("Core 1 finished in", core1_time_end-core1_time_start)
+
+
+# Application1 Function - Dual Core 4 Thread
+def application1():
+    print("Starting Process ... ", datetime.datetime.now())
+    half_process = (RANGE_LOW + RANGE_HIGH) / 2
+    # Initialize Cores
+    p1 = mp.Process(target=core1, args=(RANGE_LOW, half_process, "core1"))
+    p2 = mp.Process(target=core1, args=(half_process, RANGE_HIGH, "core2"))
+    # Start Cores
+    p1.start()
+    p2.start()
+    # Wait Till all Cores are Finished
+    p1.join()
+    p2.join()
+    # Exiting
+    print("Ending Process ... ", datetime.datetime.now())
+    print(COMBO_RESULT)
+
+
+# Core2 Kernel Function - User Determined Thread Number
 def core2(low_end, high_end, core_info, thread_number):
     # Core Configuration
     core2_start = datetime.datetime.now()
@@ -224,14 +225,14 @@ def core2(low_end, high_end, core_info, thread_number):
             thread_temp = CoreThread(index, gaps[index], gaps[index+1], core2_start, core_info)
             thread_temp.start()
             core2threads.append(thread_temp)
-            time.sleep(1)
+            time.sleep(1)  # Sleep for terminal id output
         # Wait till all finish
         for t in core2threads:
             t.join()
     # Catch exception that stop Core2 Kernel from starting
     except:
         print("Unable to start Thread in Core 2 Kernel")
-    # Print Elaspe Time
+    # Print Elapse Time
     print("Core 2 finished in", datetime.datetime.now()-core2_start)
 
 
@@ -252,13 +253,13 @@ def application2(thread_number):
     p3 = mp.Process(target=core2, args=(tasks[3], tasks[4], "core3", thread_number))
     # Start Cores
     p0.start()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)  # Sleep for terminal id output
     p1.start()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)  # Sleep for terminal id output
     p2.start()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)  # Sleep for terminal id output
     p3.start()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)  # Sleep for terminal id output
     # Wait for all cores to finish
     p0.join()
     p1.join()
@@ -273,9 +274,11 @@ def application2(thread_number):
 ##############################################################
 def main():
     print("Hello World!")
+    time_start = datetime.datetime.now()
+    application0()
     # application1()
-    # application0()
-    application2(THREAD_NUMBER)
+    # application2(THREAD_NUMBER)
+    print("Total Elapse", datetime.datetime.now()-time_start)
 
 
 ##############################################################
