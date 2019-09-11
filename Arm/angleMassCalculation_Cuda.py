@@ -12,13 +12,13 @@ import array
 ##############################################################
 #   Variable Definition
 ##############################################################
-DESIRED_HEIGHT = 10  # Centimeters
-DESIRED_REACH = 10  # Centimeters
-L1 = 10  # Humerus Length in Centimeters
-L2 = 10  # Elbow Length in Centimeters
-L3 = 10  # Radius Length in Centimeters
-L4 = 10  # Metacarpi Length in Centimeters
-L5 = 10  # Finger Length in Centimeters
+DESIRED_HEIGHT = 3  # Inches from Base Point
+DESIRED_REACH = 3  # Inches from Base Point
+L1 = 9  # Humerus Length in Inches - Straight Up
+L2 = 2.5  # Elbow Length in Inches
+L3 = 9.1  # Radius Length in Inches
+L4 = 5.15  # Metacarpi Length in Inches
+L5 = 3  # Section Cup in Inches - Straight Down
 GAP_VALUE = 1  # The Difference between Two Selected Angle
 RANGE_LOW = -90  # Maximum Rotation to the Left
 RANGE_HIGH = 90  # Maximum Rotation to the Right
@@ -39,6 +39,23 @@ def array_generator(low_end, high_end, gap):
     return result_array
 
 
+def calculation_file_generation(action, x, y, a1, a2, a3):
+    file_name = "MassResult.txt"
+    # Determine Action Type
+    if action == "w":
+        # Clear file
+        file = open(file_name, "w")
+        file.write("xLocation yLocation Angle1 Angle2 Angle3 Angle4 \n")
+        file.close()
+    else:
+        # Write file
+        file = open(file_name, "a")
+        info = [x, y, a1, a2, a3, 180-a1-a2-a3, "\n"]
+        write_info = " ".join(str(x) for x in info)
+        file.write(write_info)
+        file.close()
+
+
 @cuda.jit(nopython=True, parallel=True)
 def cal_kernel(input_array):
     # Establish Variables
@@ -49,31 +66,28 @@ def cal_kernel(input_array):
     A1 = array_generator(low_end, high_end, gap)
     A2 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
     A3 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A4 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A5 = array_generator(RANGE_LOW, RANGE_HIGH, gap)
 
     # Full Calculation Method
+    calculation_file_generation(action="w", x=0, y=0, a1=0, a2=0, a3=0)
     for a in range(A1.shape[1]):
         print(" * Current working on ", A1[a])
         for b in range(A2.shape[1]):
             for c in range(A3.shape[1]):
-                for d in range(A4.shape[1]):
-                    for e in range(A5.shape[1]):
-                        y = L1 * math.cos(math.radians(A1[0][a])) + \
-                            L2 * math.cos(math.radians(A1[0][a] + A2[0][b])) + \
-                            L3 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
-                            L4 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d])) + \
-                            L5 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d] + A5[0][e]))
-                        # Once Height Matches, Calculate Reach
-                        if y == DESIRED_HEIGHT:
-                            x = L1 * math.sin(math.radians(A1[0][a])) + \
-                                L2 * math.sin(math.radians(A1[0][a] + A2[0][b])) + \
-                                L3 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
-                                L4 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d])) + \
-                                L5 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c] + A4[0][d] + A5[0][e]))
-                            # Save the Combination for Servo Angles
-                            if x == DESIRED_REACH:
-                                COMBO_RESULT.append([A1[0][a], A2[0][b], A3[0][c], A4[0][d], A5[0][e], '\n'])
+                if RANGE_LOW <= 180 - A1[a] - A2[b] - A3[c] <= RANGE_HIGH:
+                    y = L1 * math.cos(math.radians(0)) + \
+                        L2 * math.cos(math.radians(A1[0][a])) + \
+                        L3 * math.cos(math.radians(A1[0][a] + A2[0][b])) + \
+                        L4 * math.cos(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
+                        L5 * math.cos(math.radians(180))
+
+                    x = L1 * math.sin(math.radians(0)) + \
+                        L2 * math.sin(math.radians(A1[0][a])) + \
+                        L3 * math.sin(math.radians(A1[0][a] + A2[0][b])) + \
+                        L4 * math.sin(math.radians(A1[0][a] + A2[0][b] + A3[0][c])) + \
+                        L5 * math.sin(math.radians(180))
+                    # Save the Combination for Servo Angles
+                    if x > 0:
+                        calculation_file_generation(action="a", x=x, y=y, a1=A1[a], a2=A2[b], a3=A3[c])
 
 
 ##############################################################
