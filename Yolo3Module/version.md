@@ -4,23 +4,23 @@
 Customized trained module for mushroom, iteration 6
 
 #### Change in 6.0.0-Swift
-  -[ ]Adjusted threashold based on 5.x-Peters
-  -[ ]New training set with M7
-  -[ ]Increase training complexity
-  -[ ]Remove baise training data
-  -[ ]Revert Threshold to default
-  -[ ]Initial package setup
+  - [ ] Adjusted threashold based on 5.x-Peters
+  - [ ] New training set with M7
+  - [ ] Increase training complexity
+  - [ ] Remove baise training data
+  - [ ] Revert Threshold to default
+  - [ ] Initial package setup
 <br/><br/><br/>
 
 ## 5.x-Peters
 Customized trained module for mushroom, iteration 5
 
 #### Change in 5.1.0-Peters
-  -[x]Threshold Adjustments
-  -[ ]Increase in training batch to 900
-  -[ ]New tag for certain amount of training samples
-  -[x]Retag for certain amount of training samples
-  -[ ]Revert detection threshold
+  - [x] Threshold Adjustments
+  - [ ] Increase in training batch to 900
+  - [ ] New tag for certain amount of training samples
+  - [x] Retag for certain amount of training samples
+  - [ ] Revert detection threshold
 
 #### Change in 5.0.0-Peters ~ 5.0.2-Peters
  - New condition for training
