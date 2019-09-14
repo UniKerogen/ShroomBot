@@ -44,7 +44,7 @@ Customized trained module for mushroom, iteration 4
   - Decreasing in training cycles for fast result (UD)
   - Fixed detection rate
 
-#### Change in 4.1.0-Aplin ~ 4.1.10-Aplin
+#### Change in 4.1.0-Aplin ~ 4.1.19-Aplin
   - Training batch of 300
   - New tagged photos & a certain amount of retagged photo
   - Increase of tag variety
