@@ -122,7 +122,7 @@ __NOTICE:__ Pick only one cfg file to use
 Use the following command and wait for it to finish <br/>
   __*Current Working Directory: ~/darknet*__
 ```
-./darknet detector train [PASS_TO_.data_FILE] [PASS_TO_.cfg_FILE] darknet53.conv.74
+./darknet detector train [PASS_TO_.data_FILE] [PASS_TO_.cfg_FILE] darknet53.conv.74 > bole.log
 ```
 It should take a long while to complete....<br/><br/>
 
