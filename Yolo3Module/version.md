@@ -15,12 +15,18 @@ Customized trained module for mushroom, iteration 6
 ## 5.x-Peters
 Customized trained module for mushroom, iteration 5
 
-#### Change in 5.1.0-Peters
-  - [x] Threshold Adjustments
-  - [ ] Increase in training batch to 900
-  - [ ] New tag for certain amount of training samples
-  - [x] Retag for certain amount of training samples
-  - [ ] Revert detection threshold
+#### Change in 5.2.0-Peters
+  - Threshold Adjustments
+  - Increase in training batch to 900
+  - New tag for certain amount of training samples
+  - Verification for random training samples
+
+#### Change in 5.1.0-Peters ~ 5.1.5-Peters (Current Version)
+  - Threshold Adjustments
+  - Increase in training batch to 800
+  - New tag for certain amount of training samples
+  - Retag for certain amount of training samples
+  - Revert detection threshold
 
 #### Change in 5.0.0-Peters ~ 5.0.2-Peters
  - New condition for training
@@ -33,7 +39,7 @@ Customized trained module for mushroom, iteration 5
 ## 4.x-Aplin
 Customized trained module for mushroom, iteration 4
 
-#### Change in 4.3.0-Aplin
+#### Change in 4.3.0-Aplin ~ 4.3.3-Aplin
   - Revert detection rate to default
 
 #### Change in 4.2.0-Aplin ~ 4.2.31-Aplin
