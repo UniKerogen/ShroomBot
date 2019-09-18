@@ -28,7 +28,7 @@ Customized trained module for mushroom, iteration 5
   - New tag for certain amount of training samples
   - Verification for random training samples
 
-#### Change in 5.1.0-Peters ~ 5.1.5-Peters (Current Version)
+#### Change in 5.1.0-Peters ~ 5.1.5-Peters
   - Iteration of 900
   - Threshold Adjustments
   - Increase in training batch to 800
@@ -47,10 +47,12 @@ Customized trained module for mushroom, iteration 5
 ## 4.x-Aplin
 Customized trained module for mushroom, iteration 4
 
-#### Change in 4.3.0-Aplin ~ 4.3.3-Aplin
+#### Change in 4.3.0-Aplin ~ 4.3.3-Aplin (Current Version)
+  - Iteration of 20000
   - Revert detection rate to default
 
 #### Change in 4.2.0-Aplin ~ 4.2.31-Aplin
+  - Iteration of 900
   - Threshold Adjustments
   - Addition of new training sets to 600 samples
   - Revert of Tag variety
