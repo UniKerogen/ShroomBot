@@ -22,12 +22,14 @@ Customized trained module for mushroom, iteration 6
 Customized trained module for mushroom, iteration 5
 
 #### Change in 5.2.0-Peters ~ 5.2.1-Peters (Training)
+  - Iteration of 20000
   - Threshold Adjustments
   - Increase in training batch to 900
   - New tag for certain amount of training samples
   - Verification for random training samples
 
 #### Change in 5.1.0-Peters ~ 5.1.5-Peters (Current Version)
+  - Iteration of 900
   - Threshold Adjustments
   - Increase in training batch to 800
   - New tag for certain amount of training samples
