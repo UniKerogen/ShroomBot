@@ -5,10 +5,12 @@ Customized trained module for mushroom, iteration 6
 
 #### Change in 6.1.0-Swift
   - [ ] Batch Size of 1000
+  - [ ] Iteration of 20000
   - [ ] Include M7 Pictures
   - [ ] Remove some baised training data
 
 #### Change in 6.0.0-Swift
+  - [ ] Iteration of 500
   - [ ] Batch size of 100
   - [ ] Adjusted threashold based on 5.x-Peters
   - [ ] New training set with M7
