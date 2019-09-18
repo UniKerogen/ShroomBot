@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0-Swift
+## 6.x-Swift
 Customized trained module for mushroom, iteration 6
 
 #### Change in 6.1.0-Swift
