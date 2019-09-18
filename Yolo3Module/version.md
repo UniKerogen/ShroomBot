@@ -3,7 +3,13 @@
 ## 6.0-Swift
 Customized trained module for mushroom, iteration 6
 
+#### Change in 6.1.0-Swift
+  - [ ] Batch Size of 1000
+  - [ ] Include M7 Pictures
+  - [ ] Remove some baised training data
+
 #### Change in 6.0.0-Swift
+  - [ ] Batch size of 100
   - [ ] Adjusted threashold based on 5.x-Peters
   - [ ] New training set with M7
   - [ ] Increase training complexity
@@ -15,7 +21,7 @@ Customized trained module for mushroom, iteration 6
 ## 5.x-Peters
 Customized trained module for mushroom, iteration 5
 
-#### Change in 5.2.0-Peters
+#### Change in 5.2.0-Peters ~ 5.2.1-Peters (Training)
   - Threshold Adjustments
   - Increase in training batch to 900
   - New tag for certain amount of training samples
