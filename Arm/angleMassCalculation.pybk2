@@ -28,8 +28,7 @@ DESIRED_HEIGHT = 3  # cm from Base Point
 DESIRED_REACH = 3  # cm from Base Point
 # Measurement Taken from the object #
 # L1 = 9 inches, L2 = 2.5 inches, L3 = 9.1 Inches, L4 = 5.15 Inches, L5 = 1 Inches #
-L0 = 3  # Raise of Shoulder - Straight up
-L1 = 22.86  # Humerus Length in cm
+L1 = 22.86  # Humerus Length in cm - Straight Up
 L2 = 6.35  # Elbow Length in cm
 L3 = 23.11  # Radius Length in cm
 L4 = 13.08  # Metacarpi Length in cm
@@ -37,8 +36,6 @@ L5 = 2.5  # Section Cup in cm - Straight Down
 GAP_VALUE = 180/(2*CORE_NUMBER*THREAD_NUMBER)  # The Difference between Two Selected Angle
 RANGE_LOW = -100  # Maximum Rotation to the Left
 RANGE_HIGH = 100  # Maximum Rotation to the Right
-SAVE_RANGE_LOW = 0
-SAVE_RANGE_HIGH = 40
 COMBO_RESULT = []  # Empty Space for Result
 
 
@@ -92,58 +89,53 @@ def calculation(low_end, high_end, gap, time, thread_info):
     A1 = list_generator(low_end, high_end, gap)
     A2 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     A3 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
-    A4 = list_generator(RANGE_LOW, RANGE_HIGH, gap)
     # print(thread_info[0], thread_info[1], "completed list generation with ", timeit.timeit()-time, "seconds")
 
     # Full Calculation Method
     print(thread_info[0], "thread", thread_info[1], "will work on", [items for items in A1])
-    calculation_file_generation(action="w", x=0, y=0, a1=0, a2=0, a3=0, a4=0,
+    calculation_file_generation(action="w", x=0, y=0, a1=0, a2=0, a3=0,
                                 file_name=str(thread_info[0]) + "thread" + str(thread_info[1]))
-
     for a in range(len(A1)):
         print(" * ", thread_info[0], "thread", thread_info[1], "is current working on ", A1[a])
         for b in range(len(A2)):
             for c in range(len(A3)):
-                for d in range(len(A4)):
-                    if RANGE_LOW <= 180-A1[a]-A2[b]-A3[c]-A4[d] <= RANGE_HIGH:
-                        y = L0 * math.cos(math.radians(0)) + \
-                            L1 * math.cos(math.radians(A1[a])) + \
-                            L2 * math.cos(math.radians(A1[a] + A2[b])) + \
-                            L3 * math.cos(math.radians(A1[a] + A2[b] + A3[c])) + \
-                            L4 * math.cos(math.radians(A1[a] + A2[b] + A3[c] + A4[d])) + \
-                            L5 * math.cos(math.radians(180))
-                    # Once Height Matches, Calculate Reach
-                    # if y == DESIRED_HEIGHT:
-                        x = L0 * math.sin(math.radians(0)) + \
-                            L1 * math.sin(math.radians(A1[a])) + \
-                            L2 * math.sin(math.radians(A1[a] + A2[b])) + \
-                            L3 * math.sin(math.radians(A1[a] + A2[b] + A3[c])) + \
-                            L4 * math.sin(math.radians(A1[a] + A2[b] + A3[c] + A4[d])) + \
-                            L5 * math.sin(math.radians(180))
-                            # Save the Combination for Servo Angles
-                            # if x == DESIRED_REACH:
-                            #     COMBO_RESULT.append([A1[a], A2[b], A3[c], 180-A1[a]-A2[b]-A3[c], '\n'])
-                        if SAVE_RANGE_LOW < x < SAVE_RANGE_HIGH:
-                            calculation_file_generation(action="a", x=x, y=y, a1=A1[a], a2=A2[b], a3=A3[c], a4=A4[d],
-                                                        file_name=str(thread_info[0]) + "thread" + str(thread_info[1]))
+                if RANGE_LOW <= 180-A1[a]-A2[b]-A3[c] <= RANGE_HIGH:
+                    y = L1 * math.cos(math.radians(0)) + \
+                        L2 * math.cos(math.radians(A1[a])) + \
+                        L3 * math.cos(math.radians(A1[a] + A2[b])) + \
+                        L4 * math.cos(math.radians(A1[a] + A2[b] + A3[c])) + \
+                        L5 * math.cos(math.radians(180))
+                # Once Height Matches, Calculate Reach
+                # if y == DESIRED_HEIGHT:
+                    x = L1 * math.sin(math.radians(0)) + \
+                        L2 * math.sin(math.radians(A1[a])) + \
+                        L3 * math.sin(math.radians(A1[a] + A2[b])) + \
+                        L4 * math.sin(math.radians(A1[a] + A2[b] + A3[c])) + \
+                        L5 * math.sin(math.radians(180))
+                        # Save the Combination for Servo Angles
+                        # if x == DESIRED_REACH:
+                        #     COMBO_RESULT.append([A1[a], A2[b], A3[c], 180-A1[a]-A2[b]-A3[c], '\n'])
+                    if x > 0:
+                        calculation_file_generation(action="a", x=x, y=y, a1=A1[a], a2=A2[b], a3=A3[c],
+                                                    file_name=str(thread_info[0]) + "thread" + str(thread_info[1]))
                 # print(thread_info[0], thread_info[1], "completed one 3rd-level iteration with ", timeit.timeit()-time)
             # print(thread_info[0], thread_info[1], "completed one 2nd-level iteration with ", timeit.timeit()-time)
         # print(thread_info[0], thread_info[1], "completed one 1st-level iteration with ", timeit.timeit()-time)
 
 
-def calculation_file_generation(action, x, y, a1, a2, a3, a4, file_name):
+def calculation_file_generation(action, x, y, a1, a2, a3, file_name):
     file_name = file_name + ".txt"
     # Determine Action Type
     if action == "w":
         # Clear file
         file = open(file_name, "w")
-        # file.write("xLocation yLocation Angle1 Angle2 Angle3 Angle4 Angle5\n")
+        # file.write("xLocation yLocation Angle1 Angle2 Angle3 Angle4 \n")
         file.write("\n")
         file.close()
     else:
         # Write file
         file = open(file_name, "a")
-        info = [x, y, a1, a2, a3, a4, 180-a1-a2-a3-a4]
+        info = [x, y, a1, a2, a3, 180-a1-a2-a3]
         write_info = " ".join(str(x) for x in info)
         write_info = write_info + "\n"
         # print(write_info)
@@ -369,7 +361,7 @@ def main():
     print("File generation Completed")
     time.sleep(1)
     print("File generation Elapse", datetime.datetime.now()-time_start)
-    file_concentrate(core_number=CORE_NUMBER, thread_number=THREAD_NUMBER, file_name='MassResult.txt')
+    file_concentrate(core_number=CORE_NUMBER, thread_number=THREAD_NUMBER, file_name='MassResult-Short.txt')
     print("Total Elapse", datetime.datetime.now()-time_start)
 
 

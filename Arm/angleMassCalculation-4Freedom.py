@@ -37,7 +37,7 @@ L5 = 2.5  # Section Cup in cm - Straight Down
 GAP_VALUE = 180/(2*CORE_NUMBER*THREAD_NUMBER)  # The Difference between Two Selected Angle
 RANGE_LOW = -100  # Maximum Rotation to the Left
 RANGE_HIGH = 100  # Maximum Rotation to the Right
-SAVE_RANGE_LOW = 0
+SAVE_RANGE_LOW = 5
 SAVE_RANGE_HIGH = 40
 COMBO_RESULT = []  # Empty Space for Result
 
@@ -369,7 +369,7 @@ def main():
     print("File generation Completed")
     time.sleep(1)
     print("File generation Elapse", datetime.datetime.now()-time_start)
-    file_concentrate(core_number=CORE_NUMBER, thread_number=THREAD_NUMBER, file_name='MassResult.txt')
+    file_concentrate(core_number=CORE_NUMBER, thread_number=THREAD_NUMBER, file_name='MassResult4D-Short.txt')
     print("Total Elapse", datetime.datetime.now()-time_start)
 
 
