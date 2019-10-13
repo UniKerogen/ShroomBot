@@ -6,14 +6,14 @@ Customized trained module for mushroom, iteration 6
 #### Change in 6.1.0-Swift
   - [ ] Batch Size of 1000
   - [ ] Iteration of 20000
-  - [ ] Include M7 Pictures
+  - [ ] Include PiCam Pictures
   - [ ] Remove some baised training data
 
 #### Change in 6.0.0-Swift
   - [ ] Iteration of 500
   - [ ] Batch size of 100
   - [ ] Adjusted threashold based on 5.x-Peters
-  - [ ] New training set with M7
+  - [ ] New training set with PiCam
   - [ ] Increase training complexity
   - [ ] Remove baise training data
   - [ ] Revert Threshold to default
@@ -23,17 +23,22 @@ Customized trained module for mushroom, iteration 6
 ## 5.x-Peters
 Customized trained module for mushroom, iteration 5
 
-#### Change in 5.2.0-Peters ~ 5.2.3-Peters (Training)
+### Change in 5.3.0-Peters (Planned)
+  - [ ] Iteration of 20000
+  - [ ] Increase in training batch to 800
+  - [ ] Read/write correction on some photos
+
+#### Change in 5.2.0-Peters ~ 5.2.6-Peters (Current Version)
   - Iteration of 20000
   - Threshold Adjustments
-  - Increase in training batch to 900
+  - Increase in training batch to 600 (Targeted 700 with read/write error)
   - New tag for certain amount of training samples
   - Verification for random training samples
 
 #### Change in 5.1.0-Peters ~ 5.1.6-Peters
   - Iteration of 900
   - Threshold Adjustments
-  - Increase in training batch to 800
+  - Increase in training batch to 300
   - New tag for certain amount of training samples
   - Retag for certain amount of training samples
   - Revert detection threshold
@@ -49,7 +54,7 @@ Customized trained module for mushroom, iteration 5
 ## 4.x-Aplin
 Customized trained module for mushroom, iteration 4
 
-#### Change in 4.3.0-Aplin ~ 4.3.3-Aplin (Current Version)
+#### Change in 4.3.0-Aplin ~ 4.3.3-Aplin
   - Iteration of 20000
   - Revert detection rate to default
 
