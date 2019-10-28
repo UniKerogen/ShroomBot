@@ -24,7 +24,7 @@ Customized trained module for mushroom, iteration 6
 Customized trained module for mushroom, iteration 5
 
 ### Change in 5.3.0-Peters (Planned)
-  - [ ] Iteration of 20000
+  - [ ] Iteration of 50000
   - [ ] Increase in training batch to 800
   - [ ] Read/write correction on some photos
 
