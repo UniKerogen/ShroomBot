@@ -1,0 +1,5 @@
+classes = 1
+train = /home/parallels/darknet/peters/inmyhead_train.txt
+valid = /home/parallels/darknet/peters/favouriteex_test.txt
+names = /home/parallels/darknet/peters/thisisonyou_obj.names
+backup = /home/parallels/darknet/peters/feellikethis
