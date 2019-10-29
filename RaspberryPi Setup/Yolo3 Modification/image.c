@@ -209,6 +209,7 @@ void draw_box_width(image a, int x1, int y1, int x2, int y2, int w, float r, flo
 	printf("boundaryx2: %d\n", x2);
 	printf("boundaryy1: %d\n", y1);
 	printf("boundaryy2: %d\n", y2);
+	printf("boundary center: %d %d\n", (x1+x2)/2, (y1+y2)/2);
 }
 
 void draw_bbox(image a, box bbox, int w, float r, float g, float b)
