@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SimscapeMultibodyImportXML version="2.0" xmlns="urn:mathworks:SimscapeMultibody:import" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Created by="" on="09/14/19||11:52:41" using="Simscape Multibody Link Version 6.1" from="SolidWorks 26.3.0"/>
+<ModelUnits mass="kilogram" length="millimeter"/>
+<DataUnits mass="kilogram" length="meter"/>
+<RootAssembly name="Arm Base Assembly" uid="Arm Base Assembly" version="889">
+<AssemblyFile name="Arm Base Assembly.SLDASM" type="SolidWorks Assembly"/>
+<InstanceTree>
+<Instance name="GT2 Belt 6mm x 40mm.stp-4" uid="GT2 Belt 6mm x 40mm.stp-4" entityUid="GT2 Belt 6mm x 40mm.stp*:*Default">
+<Transform>
+<Rotation>0 1 0 0 0 -1 -1 0 0</Rotation>
+<Translation>0.043372178212325807 0.0032775634157231415 0.099592058256320143</Translation>
+</Transform>
+</Instance>
+<Instance name="2.5 inch-3" uid="2.5 inch-3" entityUid="2.5 inch*:*Default">
+<Transform>
+<Rotation>1 -1.4198287691500584e-15 -2.5359250862105795e-15 3.0424880346311819e-16 -0.81661299788046782 0.57718559553463822 -2.8903741007297943e-15 -0.57718559553463822 -0.81661299788046782</Rotation>
+<Translation>0.011684253808225168 0.19079700869631286 -0.1857466192087007</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo + Connectors-3" uid="Servo + Connectors-3" entityUid="Servo + Connectors">
+<Transform>
+<Rotation>-1.3767293954857937e-16 7.821955938801924e-16 1 0.29190939162464696 -0.95644597708460699 7.8831585308681767e-16 0.95644597708460699 0.29190939162464696 0</Rotation>
+<Translation>-0.035456116033199314 0.32857866778823086 0.0093584593835367904</Translation>
+</Transform>
+<Instance name="Part3-1" uid="Part3-1" entityUid="Part3*:*Default">
+<Transform>
+<Rotation>0 1 1.1102230246251565e-16 -4.6940937511009657e-16 1.1102230246251565e-16 -1 -1 0 4.6940937511009676e-16</Rotation>
+<Translation>-0.011114512482306688 0.05645089914143081 0.046765369841423585</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0" g="0" b="0" a="1"/>
+<Diffuse r="0" g="0" b="0" a="1"/>
+<Specular r="0" g="0" b="0" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="Lewansoul LX-16A Servo-1" uid="Lewansoul LX-16A Servo-1" grounded="true" entityUid="Lewansoul LX-16A Servo*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.0061145124823066971 0.046950899141430802 0.032640369841423572</Translation>
+</Transform>
+</Instance>
+<Instance name="Part4-1" uid="Part4-1" entityUid="Part4*:*Default">
+<Transform>
+<Rotation>0.57740604204922685 -0.81645714070307851 -2.4831457034762778e-16 0.81645714070307851 0.57740604204922685 4.9563891763489462e-16 -2.6128960026577683e-16 -4.8892310981806501e-16 0.99999999999999989</Rotation>
+<Translation>0.03331714135583673 0.041068752208498482 0.047140369841430274</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="base-1" uid="base-1" grounded="true" entityUid="base*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0.012059253808221509 -0.0037224365842768586 0.10089976693855535</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0.50196078431372548" g="1" b="1" a="1"/>
+<Diffuse r="0.50196078431372548" g="1" b="1" a="1"/>
+<Specular r="0.25098039215686274" g="0.5" b="0.5" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="6 inch-1" uid="6 inch-1" entityUid="6 inch*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0.012059253808221503 0.054277563415723123 0.10089976693855553</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Diffuse r="0.75294117647058822" g="0.75294117647058822" b="0.75294117647058822" a="1"/>
+<Specular r="0.37647058823529411" g="0.37647058823529411" b="0.37647058823529411" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="Base round top-1" uid="Base round top-1" entityUid="Base round top*:*Default">
+<Transform>
+<Rotation>4.4408920985006262e-16 0 -1.0000000000000002 0 -1 0 -1.0000000000000002 0 -4.4408920985006262e-16</Rotation>
+<Translation>0.012059253808222113 0.07627756341572324 0.10089976693855533</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="1" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Diffuse r="1" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Specular r="0.5" g="0.25098039215686274" b="0.25098039215686274" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="6 inch-2" uid="6 inch-2" entityUid="6 inch*:*Default">
+<Transform>
+<Rotation>1 -2.6685144224433034e-15 -1.2900024258482377e-15 4.5485320903491171e-16 -0.29190939162464619 0.95644597708460721 -2.9288537074618282e-15 -0.95644597708460721 -0.29190939162464619</Rotation>
+<Translation>0.011684253808225664 0.27134200182468565 0.015206576257617264</Translation>
+</Transform>
+</Instance>
+<Instance name="triangle stopper-1" uid="triangle stopper-1" entityUid="triangle stopper*:*Default">
+<Transform>
+<Rotation>0.70710678118654779 0 -0.70710678118654735 0 1 0 0.70710678118654735 0 0.70710678118654779</Rotation>
+<Translation>0.033318126892741197 0.076277563415723143 0.073419864293616258</Translation>
+</Transform>
+</Instance>
+<Instance name="GT2 Belt 6mm x 40mm.stp-1" uid="GT2 Belt 6mm x 40mm.stp-1" entityUid="GT2 Belt 6mm x 40mm.stp*:*Default">
+<Transform>
+<Rotation>0 1 0 0 0 -1 -1 0 0</Rotation>
+<Translation>-0.080304721243178209 0.0032775634157231415 0.099592058256320129</Translation>
+</Transform>
+</Instance>
+<Instance name="triangle stopper-2" uid="triangle stopper-2" entityUid="triangle stopper*:*Default">
+<Transform>
+<Rotation>-0.70710678118654779 0 0.70710678118654724 0 1 0 -0.70710678118654724 0 -0.70710678118654779</Rotation>
+<Translation>-0.0091981091622759491 0.076277563415723143 0.12838117969751667</Translation>
+</Transform>
+</Instance>
+<Instance name="LX15D-SERVO.step-1" uid="LX15D-SERVO.step-1" entityUid="LX15D-SERVO.step*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.00042574619177850048 0.039527563415723152 0.10089976693855535</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo + Connectors-1" uid="Servo + Connectors-1" entityUid="Servo + Connectors">
+<Transform>
+<Rotation>-7.0843851677200898e-16 -1.2212453270876722e-15 -1.0000000000000002 1 -7.9936059860177888e-16 -7.0843851677200879e-16 -7.9936059860177671e-16 -1.0000000000000002 1.2212453270876722e-15</Rotation>
+<Translation>0.058824623649645975 0.21739207589803008 0.15735066607998718</Translation>
+</Transform>
+<Instance name="Part4-1" uid="Part4-1" entityUid="Part4*:*Default">
+<Transform>
+<Rotation>0.61234690123246904 -0.79058919329256749 1.1402743118779784e-16 0.7905891932925676 0.61234690123246904 6.3581754851895378e-16 -5.7249482690820422e-16 -2.9919205074882154e-16 1</Rotation>
+<Translation>0.032644383421773671 0.040890670943312613 0.047140369841436783</Translation>
+</Transform>
+</Instance>
+<Instance name="Part3-1" uid="Part3-1" entityUid="Part3*:*Default">
+<Transform>
+<Rotation>-7.0843851677200898e-16 1 -7.9936059860177671e-16 -1.2212453270876722e-15 -7.9936059860177888e-16 -1.0000000000000002 -1.0000000000000002 -7.0843851677200879e-16 1.2212453270876722e-15</Rotation>
+<Translation>-0.011114512482306688 0.056450899141430894 0.046765369841423599</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0" g="0" b="0" a="1"/>
+<Diffuse r="0" g="0" b="0" a="1"/>
+<Specular r="0" g="0" b="0" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="Lewansoul LX-16A Servo-1" uid="Lewansoul LX-16A Servo-1" grounded="true" entityUid="Lewansoul LX-16A Servo*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.0061145124823066832 0.046950899141430885 0.032640369841423586</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Servo + Connectors-4" uid="Servo + Connectors-4" entityUid="Servo + Connectors">
+<Transform>
+<Rotation>-8.5980167099050044e-16 -7.6323113837090912e-16 -1 -0.29190939162464613 -0.95644597708460721 9.809735345772524e-16 -0.95644597708460721 0.29190939162464613 5.9955951203864901e-16</Rotation>
+<Translation>0.058824623649645205 0.27771957910745515 -0.1572821906352414</Translation>
+</Transform>
+<Instance name="Lewansoul LX-16A Servo-1" uid="Lewansoul LX-16A Servo-1" grounded="true" entityUid="Lewansoul LX-16A Servo*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.0061145124823067387 0.046950899141430857 0.032640369841423572</Translation>
+</Transform>
+</Instance>
+<Instance name="Part3-1" uid="Part3-1" entityUid="Part3*:*Default">
+<Transform>
+<Rotation>0 1 1.1102230246251565e-16 -4.6940937511009657e-16 1.1102230246251565e-16 -1 -1 0 4.6940937511009676e-16</Rotation>
+<Translation>-0.011114512482306743 0.056450899141430921 0.046765369841423592</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0" g="0" b="0" a="1"/>
+<Diffuse r="0" g="0" b="0" a="1"/>
+<Specular r="0" g="0" b="0" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="Part4-1" uid="Part4-1" entityUid="Part4*:*Default">
+<Transform>
+<Rotation>0.7904238442843522 -0.61256032061075105 -1.9453432014383786e-15 0.61256032061075105 0.7904238442843522 2.0650197327751013e-15 2.726965021571085e-16 -2.8238808908741796e-15 1</Rotation>
+<Translation>0.02863825308249722 0.040444997881744549 0.047140369841419699</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Servo + Connectors-5" uid="Servo + Connectors-5" entityUid="Servo + Connectors">
+<Transform>
+<Rotation>-1.3296894457021448e-15 2.6698956545692786e-15 -1 -0.81661299788046815 -0.577185595534638 -4.5518362889306443e-16 -0.577185595534638 0.81661299788046815 2.9477490890995701e-15</Rotation>
+<Translation>0.058449623649645607 0.16244847381215882 -0.27491157901225971</Translation>
+</Transform>
+<Instance name="Lewansoul LX-16A Servo-1" uid="Lewansoul LX-16A Servo-1" grounded="true" entityUid="Lewansoul LX-16A Servo*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-0.0061145124823066971 0.046950899141430913 0.032640369841423579</Translation>
+</Transform>
+</Instance>
+<Instance name="Part4-1" uid="Part4-1" entityUid="Part4*:*Default">
+<Transform>
+<Rotation>0.81661299788046826 -0.57718559553463777 1.4704533918794479e-15 0.57718559553463777 0.81661299788046826 -1.9256446595738946e-15 0 2.4212309750050222e-15 1</Rotation>
+<Translation>0.027934177483071976 0.040471380712577776 0.047140369841345134</Translation>
+</Transform>
+</Instance>
+<Instance name="Part3-1" uid="Part3-1" entityUid="Part3*:*Default">
+<Transform>
+<Rotation>0 1.0000000000000002 1.1102230246251565e-16 -4.6940937511009814e-16 1.1102230246251565e-16 -1.0000000000000002 -1 0 4.6940937511009459e-16</Rotation>
+<Translation>-0.011114512482306674 0.056450899141430866 0.046765369841423585</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="0" g="0" b="0" a="1"/>
+<Diffuse r="0" g="0" b="0" a="1"/>
+<Specular r="0" g="0" b="0" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Instance>
+</Instance>
+</InstanceTree>
+<Constraints>
+<Coincident name="Coincident2">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.040000000000000008 0.080000000000000002 -0.039999999999999994</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Base round top-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric1">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0 0.070000000000000007 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Base round top-1</Uid>
+</InstancePath>
+<Position>0 0.0079999999999999932 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Distance name="Distance2">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>0.023499999999999993 0.152 -0.018500000000000003</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Base round top-1</Uid>
+</InstancePath>
+<Position>-0.02360000000000001 0.009999999999999995 -0.023600000000000017</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Distance>
+<Distance name="Distance3">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>-0.018500000000000003 0.152 0.023500000000000007</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Base round top-1</Uid>
+</InstancePath>
+<Position>-0.023599999999999996 0.009999999999999995 0.02360000000000001</Position>
+<Axis>1.0000000000000002 0 1.4701046406583112e-16</Axis>
+</ConstraintGeometry>
+</Distance>
+<Coincident name="Coincident8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>LX15D-SERVO.step-1</Uid>
+</InstancePath>
+<Position>0 0.012749999999999997 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.029770000000000012 0.055999999999999994 0.011800000000000005</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Distance name="Distance5">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.034770000000000009 0.055999999999999994 -0.011999999999999997</Position>
+<Axis>1 2.5944544655371597e-16 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>LX15D-SERVO.step-1</Uid>
+</InstancePath>
+<Position>-0.022085 0.012749999999999997 0.011474999999999999</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Coincident name="Coincident10">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.038000000000000013 0.0070000000000000001 -0.013500000000000012</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-1</Uid>
+</InstancePath>
+<Position>0.012377257130814695 0.046531909996452403 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident11">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.050000000000000003 0.0070000000000000001 -0.01465000000000001</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-1</Uid>
+</InstancePath>
+<Position>0.013342291317764807 0.046532852500501598 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident12">
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.041831122550898117 0.0070000000000000001 -0.01465000000000001</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-1</Uid>
+</InstancePath>
+<Position>0.013342291317764807 0.050532852500501602 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident14">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.050000000000000003 0.0070000000000000001 -0.01235</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Arm Base Assembly</Uid>
+</InstancePath>
+<Position>-0.066788846691436324 0.0032775634157231415 0.08854976693855536</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident15">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.038000000000000013 0.0070000000000000001 -0.013500000000000012</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Arm Base Assembly</Uid>
+</InstancePath>
+<Position>-0.066787904187387129 0.0032775634157231415 0.087584732751605263</Position>
+<Axis>1.6653345369377348e-16 1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident19">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0.041845776904605898 0.0070000000000000001 -0.014649999999999996</Position>
+<Axis>1.4891748962199272e-15 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-4</Uid>
+</InstancePath>
+<Position>0.013342291317764793 0.046532852500501598 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident20">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0.038000000000000013 0.0070000000000000001 -0.013500000000000012</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-4</Uid>
+</InstancePath>
+<Position>0.012377257130814695 0.046531909996452403 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident21">
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0.041845776904605898 0.0070000000000000001 -0.014649999999999996</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>GT2 Belt 6mm x 40mm.stp-4</Uid>
+</InstancePath>
+<Position>0.013342291317764793 0.010532852500501601 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident22">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.041770000000000015 0.057999999999999968 -0.011999999999999997</Position>
+<Axis>2.6283689029951625e-16 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident23">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.040000000000000008 0.080000000000000002 -0.039999999999999994</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>triangle stopper-1</Uid>
+</InstancePath>
+<Position>0.0088000000000000023 0 -0.014999999999999999</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident25">
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0.028709290373184947 0.084000000000000005 -0.03507174128984164</Position>
+<Axis>0.70710678118654757 0 0.70710678118654724</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>triangle stopper-1</Uid>
+</InstancePath>
+<Position>0.0095797776795422951 0.0036546123722818319 -0.010998015940405878</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident26">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.040000000000000008 0.080000000000000002 -0.039999999999999994</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>triangle stopper-2</Uid>
+</InstancePath>
+<Position>0.0088000000000000161 0 -0.014999999999999986</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Distance name="Distance6">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.03507174128984164 0.080000000000000002 0.028709290373184954</Position>
+<Axis>0.70710678118654757 0 0.70710678118654746</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>triangle stopper-2</Uid>
+</InstancePath>
+<Position>0.0088000000000000023 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Distance>
+<Coincident name="Coincident29">
+<ConstraintGeometry geomType="line">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.03507174128984164 0.084000000000000005 0.028709290373184954</Position>
+<Axis>0.70710678118654757 0 0.70710678118654724</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>triangle stopper-2</Uid>
+</InstancePath>
+<Position>0.0095797776795422673 0.0036546123722818319 -0.010998015940405878</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident30">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>0 0.152 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-1</Uid>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident35">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-1</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0.040000000000000008 0.024999999999999967 -0.020897012720000024</Position>
+<Axis>1.0000000000000002 2.2204460492503131e-16 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-3</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0.040000000000000008 0.024999999999999967 -0.020897012720000024</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident36">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-1</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0.024999999999999967 0.022249999999999992</Position>
+<Axis>-3.5909082827073577e-16 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-3</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0.025000000000000022 -0.022249999999999999</Position>
+<Axis>3.5909082827073567e-16 0 -0.99999999999999989</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident37">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-1</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>-2.2204460492503131e-16 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-3</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident38">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-3</Uid>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident41">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-2</Uid>
+</InstancePath>
+<Position>0 0.15199999999999997 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-4</Uid>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident42">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-4</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0.040000000000000008 0.024999999999999994 -0.020897012720000028</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>2.5 inch-3</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident43">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-5</Uid>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1.0000000000000002 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>2.5 inch-3</Uid>
+</InstancePath>
+<Position>0 0.063500000000000001 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Parallel name="Parallel6">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>0.049999999999999996 0.025000000000000001 -0.049999999999999996</Position>
+<Axis>1 0 -1.3877787807814457e-16</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>0.023499999999999993 0.152 -0.018500000000000003</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Parallel>
+<Coincident name="Coincident51">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>base-1</Uid>
+</InstancePath>
+<Position>-0.040000000000000008 0.080000000000000002 -0.039999999999999994</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-5</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0.040000000000000008 0.024999999999999967 -0.020897012720000035</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Angle name="LimitAngle2">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-1</Uid>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0.024999999999999994 0</Position>
+<Axis>2.2204460492503131e-16 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>-0.018500000000000006 0.152 -0.023500000000000007</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Angle>
+<Angle name="LimitAngle3">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo + Connectors-3</Uid>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0.045000000000000012 0.02200000000000002 -0.0014999999999999996</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>6 inch-1</Uid>
+</InstancePath>
+<Position>-0.018500000000000006 0.152 -0.023500000000000007</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Angle>
+</Constraints>
+</RootAssembly>
+<Assemblies>
+<Assembly name="Servo + Connectors" uid="Servo + Connectors" version="187">
+<ModelUnits mass="kilogram" length="inch"/>
+<AssemblyFile name="Servo + Connectors.SLDASM" type="SolidWorks Assembly"/>
+<Constraints>
+<Parallel name="Parallel1">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0 0.022000000000000006 -0.0032499999999999994</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0 0.0040000000000000001 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Parallel>
+<Coincident name="Coincident6">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0 -0.0030000000000000027 -0.0015000000000000013</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>0.01562500000000001 0.010000000000000002 0.0074999999999999997</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0 -0.0030000000000000027 -0.0015000000000000013</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>-0.017375000000000002 0.0040000000000000001 0.012499999999999997</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Tangent name="Tangent1">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0.0089999999999999993 0.022000000000000006 0.039000000000000007</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Part3-1</Uid>
+</InstancePath>
+<Position>-0.017375000000000002 0.0115 -0.009999999999999995</Position>
+<Axis>-1 0 0</Axis>
+</ConstraintGeometry>
+</Tangent>
+<Concentric name="Concentric1">
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0.035000000000000003 0.0095000000000000015 -0.0037499999999999999</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0.009999999999999995 0.012499999999999997 -0.022249999999999999</Position>
+<Axis>0 0 0.99999999999999989</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident9">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Lewansoul LX-16A Servo-1</Uid>
+</InstancePath>
+<Position>0.03125 0.0057499999999999982 -0.0037499999999999999</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Part4-1</Uid>
+</InstancePath>
+<Position>0 0.025000000000000015 -0.018250000000000002</Position>
+<Axis>-2.0027394453842045e-16 0 0.99999999999999989</Axis>
+</ConstraintGeometry>
+</Coincident>
+</Constraints>
+</Assembly>
+</Assemblies>
+<Parts>
+<Part name="2.5 inch" uid="2.5 inch*:*Default" version="289">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="2.5 inch.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.044935629370098873</Mass>
+<CenterOfMass>-0.00015398818110438545 0.031748430472967638 1.0508371863249692e-06</CenterOfMass>
+<Inertia>3.1596707528995678e-05 2.3025440541622517e-05 3.7632489035058977e-05 1.4680743978057026e-10 -1.0695727937796786e-09 1.5977788570764789e-09</Inertia>
+</MassProperties>
+<GeometryFile name="2.5 inch_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="6 inch" uid="6 inch*:*Default" version="317">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="6 inch.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.085607915445921667</Mass>
+<CenterOfMass>-0.00032334179298181817 0.075993402797758985 4.4079588028215299e-06</CenterOfMass>
+<Inertia>0.00023589096639312689 4.8627642097066042e-05 0.00025223401651615574 2.3492788891638732e-09 -8.6131468216119427e-09 1.2887901073056976e-08</Inertia>
+</MassProperties>
+<GeometryFile name="6 inch_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="Base round top" uid="Base round top*:*Default" version="150">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="Base round top.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.022724769182332294</Mass>
+<CenterOfMass>0 0.0040700442880210385 1.3859178476636101e-06</CenterOfMass>
+<Inertia>1.3140120400000736e-05 2.6026357057950827e-05 1.3140117483624997e-05 -1.4739362891091512e-10 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="Base round top_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="1" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Diffuse r="1" g="0.50196078431372548" b="0.50196078431372548" a="1"/>
+<Specular r="0.5" g="0.25098039215686274" b="0.25098039215686274" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="GT2 Belt 6mm x 40mm.stp" uid="GT2 Belt 6mm x 40mm.stp*:*Default" version="118">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="GT2 Belt 6mm x 40mm.stp.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00026838818827176303</Mass>
+<CenterOfMass>0.012735255787651136 0.030534083916912824 0.0030000000000000005</CenterOfMass>
+<Inertia>3.6611400008572044e-08 8.4680824016342143e-10 3.5847878934145679e-08 0 0 1.9257404508537414e-13</Inertia>
+</MassProperties>
+<GeometryFile name="GT2 Belt 6mm x 40mm.stp_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.15294117647058825" g="0.15294117647058825" b="0.15294117647058825" a="1"/>
+<Diffuse r="0.15294117647058825" g="0.15294117647058825" b="0.15294117647058825" a="1"/>
+<Specular r="0.076470588235294124" g="0.076470588235294124" b="0.076470588235294124" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="LX15D-SERVO.step" uid="LX15D-SERVO.step*:*Default" version="133">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="LX15D-SERVO.step.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.026904054269188057</Mass>
+<CenterOfMass>6.8635688524413342e-05 0.00015020127573118553 0</CenterOfMass>
+<Inertia>2.7806839433460144e-06 5.5691464617002782e-06 6.0187670257416104e-06 0 0 2.3955616026415033e-08</Inertia>
+</MassProperties>
+<GeometryFile name="LX15D-SERVO.step_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="1" g="0.50196078431372548" b="1" a="1"/>
+<Diffuse r="1" g="0.50196078431372548" b="1" a="1"/>
+<Specular r="0.5" g="0.25098039215686274" b="0.5" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="Lewansoul LX-16A Servo" uid="Lewansoul LX-16A Servo*:*Default" version="237">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="Lewansoul LX-16A Servo.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.036753942909403411</Mass>
+<CenterOfMass>0.022470874057773267 0.0094990610105102936 0.014685636073691917</CenterOfMass>
+<Inertia>5.3374358320512763e-06 9.7290516984103312e-06 8.05010873640453e-06 -2.6842474045842371e-10 -1.9610879474308854e-08 4.2604806680154825e-11</Inertia>
+</MassProperties>
+<GeometryFile name="Lewansoul LX-16A Servo_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.90196078431372551" g="0.87450980392156863" b="0.42352941176470588" a="1"/>
+<Diffuse r="0.90196078431372551" g="0.87450980392156863" b="0.42352941176470588" a="1"/>
+<Specular r="0.45098039215686275" g="0.43725490196078431" b="0.21176470588235294" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="Part3" uid="Part3*:*Default" version="174">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="Part3.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.0036652461237335751</Mass>
+<CenterOfMass>-5.2876533598299408e-06 0.0022984104277360049 0</CenterOfMass>
+<Inertia>2.1213719453994915e-07 6.0308350009450195e-07 4.1445585700106882e-07 0 0 3.2611690726194916e-09</Inertia>
+</MassProperties>
+<GeometryFile name="Part3_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="Part4" uid="Part4*:*Default" version="185">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="Part4.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.011610730091830125</Mass>
+<CenterOfMass>0.025676614743640604 0.012500000000000001 0</CenterOfMass>
+<Inertia>4.2797440144887317e-06 5.5426109280698403e-06 2.4763779006320166e-06 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="Part4_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0" g="0" b="0" a="1"/>
+<Diffuse r="0" g="0" b="0" a="1"/>
+<Specular r="0" g="0" b="0" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="base" uid="base*:*Default" version="506">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="base.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.44148474628207002</Mass>
+<CenterOfMass>-0.00014799026593941702 0.034520862036766166 1.9102241505927118e-05</CenterOfMass>
+<Inertia>0.00073785140904915564 0.00094482722962073191 0.00072521862589137803 2.4440498402501745e-07 5.4824342973215399e-07 1.0832258032387303e-06</Inertia>
+</MassProperties>
+<GeometryFile name="base_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.50196078431372548" g="1" b="1" a="1"/>
+<Diffuse r="0.50196078431372548" g="1" b="1" a="1"/>
+<Specular r="0.25098039215686274" g="0.5" b="0.5" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="triangle stopper" uid="triangle stopper*:*Default" version="141">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="triangle stopper.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00037626682910279997</Mass>
+<CenterOfMass>0.0044000000000000003 0.0018612328401765071 -0.0098932329622983747</CenterOfMass>
+<Inertia>5.5519975582274865e-09 7.3291672644276274e-09 3.0791808347533788e-09 8.9123187100240144e-10 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="triangle stopper_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+</Parts>
+</SimscapeMultibodyImportXML>

@@ -1,0 +1,48 @@
+Constrained Instances: 'LX15D-SERVO.step-1', 'LX15D-SERVO.step-1', 'base-1', 'base-1'
+Constraint Name: Width1
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'triangle stopper-1', 'triangle stopper-1', 'base-1', 'base-1'
+Constraint Name: Width2
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'Servo + Connectors-1/Part3-1', 'Servo + Connectors-1/Part3-1', '6 inch-1', '6 inch-1'
+Constraint Name: Width3
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '6 inch-1', '6 inch-1', 'Servo + Connectors-1/Part3-1', 'Servo + Connectors-1/Part3-1'
+Constraint Name: Width4
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '6 inch-2', '6 inch-2', 'Servo + Connectors-3/Part4-1', 'Servo + Connectors-3/Part4-1'
+Constraint Name: Width5
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '6 inch-2', '6 inch-2', 'Servo + Connectors-3/Part3-1', 'Servo + Connectors-3/Part3-1'
+Constraint Name: Width6
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'Servo + Connectors-4/Part4-1', 'Servo + Connectors-4/Part4-1', '6 inch-2', '6 inch-2'
+Constraint Name: Width7
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'Servo + Connectors-4/Lewansoul LX-16A Servo-1', 'Servo + Connectors-4/Lewansoul LX-16A Servo-1', '6 inch-2', '6 inch-2'
+Constraint Name: Width8
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '2.5 inch-3', '2.5 inch-3', 'Servo + Connectors-4/Part4-1', 'Servo + Connectors-4/Part4-1'
+Constraint Name: Width9
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '2.5 inch-3', '2.5 inch-3', 'Servo + Connectors-4/Part4-1', 'Servo + Connectors-4/Part4-1'
+Constraint Name: Width10
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'Servo + Connectors-5/Part3-1', 'Servo + Connectors-5/Part3-1', '2.5 inch-3', '2.5 inch-3'
+Constraint Name: Width11
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: 'Servo + Connectors-5/Part3-1', 'Servo + Connectors-5/Part3-1', '2.5 inch-3', '2.5 inch-3'
+Constraint Name: Width12
+Error Details: Constraint is not supported. The constraint has been ignored.
+---------------------------------------------------------------------------------
