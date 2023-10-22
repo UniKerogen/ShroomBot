@@ -14,6 +14,6 @@ The aim of the project is to create a robot to pick mashroom in mashroom farms, 
 
 ## Simulation Image Recognition Result
 <p float="left">
-  <img scr="https://github.com/UniKerogen/ShroomBot/blob/master/Yolo3Module/peters/dummy.jpg", width="45%" />
-  <img scr="https://github.com/UniKerogen/ShroomBot/blob/master/Yolo3Module/peters/original_dummy.jpg", width="45%" />
+  <img scr="https://github.com/UniKerogen/ShroomBot/blob/master/Yolo3Module/peters/dummy.jpg" width="45%" />
+  <img scr="https://github.com/UniKerogen/ShroomBot/blob/master/Yolo3Module/peters/original_dummy.jpg" width="45%" />
 </p>
